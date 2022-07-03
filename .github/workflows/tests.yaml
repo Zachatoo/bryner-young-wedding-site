@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Lint
+      - name: Install modules
+        run: yarn
+      - name: Run lint
         run: yarn lint
   vitest:
     runs-on: ubuntu-latest
