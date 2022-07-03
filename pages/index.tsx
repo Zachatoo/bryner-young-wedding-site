@@ -2,9 +2,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { Countdown } from "../components";
 
-const weddingDate = new Date("2022-09-09");
-
 const Home: NextPage = () => {
+  const weddingDate = new Date(2022, 8, 9, 12, 0, 0);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
