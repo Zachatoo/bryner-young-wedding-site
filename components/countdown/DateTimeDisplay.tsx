@@ -6,7 +6,7 @@ interface Props {
 export function DateTimeDisplay({ value, type }: Props) {
   return (
     <div className="text-lg">
-      <p>{value}</p>
+      <p data-testid={`countdown-${type}`}>{value}</p>
       <p>{type}</p>
     </div>
   );
