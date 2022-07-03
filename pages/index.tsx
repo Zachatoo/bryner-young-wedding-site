@@ -14,7 +14,7 @@ const Home: NextPage = () => {
 
       <main className="flex flex-col items-center justify-center flex-1 w-full px-8 text-center">
         <h1 className="text-6xl font-bold font-great-vibes">
-          {"We're Engaged!"}
+          {"We're Getting Married!"}
         </h1>
         <Countdown targetTime={weddingDate} className="py-8" />
       </main>
