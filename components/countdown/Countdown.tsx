@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { useCountdown } from "../../hooks";
+import { useIsMounted } from "../../hooks/useIsMounted";
 import { DateTimeDisplay } from "./DateTimeDisplay";
 
 interface Props {
@@ -8,7 +9,12 @@ interface Props {
 }
 
 export function Countdown({ targetTime, className }: Props) {
+  const isMounted = useIsMounted();
   const { days, hours, minutes, seconds } = useCountdown(targetTime);
+
+  if (!isMounted) {
+    return null;
+  }
 
   const classes = classNames("flex gap-6", className);
 
