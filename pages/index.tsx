@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import { Countdown } from "../components";
+import { Countdown, Head } from "../components";
 
 const Home: NextPage = () => {
   const weddingDate = new Date(2022, 8, 9, 12, 0, 0);
@@ -16,10 +15,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Head>
-        <title>Bryner-Young Wedding</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Head></Head>
 
       <main className="flex flex-col items-center justify-center flex-1 w-full px-8 text-center">
         <div className="flex flex-col pb-8 text-center sm:pb-16 font-great-vibes">
