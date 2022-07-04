@@ -23,3 +23,16 @@ jobs:
         run: npm i
       - name: Run tests
         run: npm run test:ci
+  cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install modules
+        run: npm i
+      - name: Build
+        run: npm build
+      - name: Run Cypress
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm start
+          wait-on: "http://localhost:3000"
