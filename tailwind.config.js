@@ -9,7 +9,31 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "great-vibes": ['"Great Vibes"', ...defaultTheme.fontFamily.sans],
+        "great-vibes": [
+          '"Great Vibes"',
+          "Montserrat",
+          ...defaultTheme.fontFamily.sans,
+        ],
+        sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
+      },
+      fontSize: {
+        "6.5xl": "4rem",
+        ...defaultTheme.fontSize,
+      },
+    },
+    colors: {
+      cream: {
+        DEFAULT: "var(--color-cream)",
+      },
+      blue: {
+        DEFAULT: "var(--color-blue)",
+      },
+      purple: {
+        DEFAULT: "var(--color-purple)",
+      },
+      green: {
+        DEFAULT: "var(--color-green)",
+        dark: "var(--color-green-dark)",
       },
     },
   },
