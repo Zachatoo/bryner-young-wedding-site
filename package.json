@@ -9,7 +9,7 @@
     "lint": "next lint",
     "prepare": "husky install",
     "cypress:open": "cypress open",
-    "cypress:ci": "cypress run"
+    "cypress:ci": "cypress run --config-file=cypress.config.ts"
   },
   "dependencies": {
     "next": "latest",
