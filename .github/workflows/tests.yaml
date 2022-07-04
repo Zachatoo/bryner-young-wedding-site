@@ -30,7 +30,7 @@ jobs:
       - name: Install modules
         run: npm i
       - name: Build
-        run: npm build
+        run: npm run build
       - name: Run Cypress
         uses: cypress-io/github-action@v2
         with:
