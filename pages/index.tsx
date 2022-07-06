@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
-import { Countdown, Head } from "../components";
+import { Countdown, Head } from "components";
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
   const weddingDate = new Date(2022, 8, 9, 12, 0, 0);
   const dateFormatOptions: Intl.DateTimeFormatOptions = {
     month: "long",
@@ -36,4 +36,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default HomePage;

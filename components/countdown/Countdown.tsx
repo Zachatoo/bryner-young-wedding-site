@@ -1,6 +1,5 @@
 import classNames from "classnames";
-import { useCountdown } from "../../hooks";
-import { useIsMounted } from "../../hooks/useIsMounted";
+import { useCountdown, useIsMounted } from "hooks";
 import { DateTimeDisplay } from "./DateTimeDisplay";
 
 interface Props {
