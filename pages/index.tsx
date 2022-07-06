@@ -1,5 +1,10 @@
 import type { NextPage } from "next";
-import { Countdown, Head } from "components";
+import { Head } from "components";
+import dynamic from "next/dynamic";
+
+const Countdown = dynamic(() => import("../components/countdown/Countdown"), {
+  ssr: false,
+});
 
 const HomePage: NextPage = () => {
   const weddingDate = new Date(2022, 8, 9, 12, 0, 0);
