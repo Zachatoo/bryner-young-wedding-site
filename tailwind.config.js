@@ -20,18 +20,35 @@ module.exports = {
         "6.5xl": "4rem",
         ...defaultTheme.fontSize,
       },
+      screens: {
+        xs: "500px",
+      },
     },
     colors: {
+      white: {
+        DEFAULT: "white",
+      },
       cream: {
         DEFAULT: "var(--color-cream)",
+        dark: "var(--color-cream-dark)",
       },
       blue: {
+        light: "var(--color-blue-light)",
         DEFAULT: "var(--color-blue)",
+        dark: "var(--color-blue-dark)",
       },
       purple: {
+        light: "var(--color-purple-light)",
         DEFAULT: "var(--color-purple)",
+        dark: "var(--color-purple-dark)",
+      },
+      spruce: {
+        light: "var(--color-spruce-light)",
+        DEFAULT: "var(--color-spruce)",
+        dark: "var(--color-spruce-dark)",
       },
       green: {
+        light: "var(--color-green-light)",
         DEFAULT: "var(--color-green)",
         dark: "var(--color-green-dark)",
       },

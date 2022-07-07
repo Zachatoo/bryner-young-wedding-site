@@ -4,8 +4,23 @@
 
 :root {
   --color-cream: #fef7e5;
-  --color-blue: #c5d5ee;
-  --color-purple: #a798af;
-  --color-green: #a6c2b3;
-  --color-green-dark: #749b7c;
+  --color-cream-dark: #e8e1d1;
+  --color-blue-light: #c5d5ee;
+  --color-blue: #b4c3da;
+  --color-blue-dark: #9faec1;
+  --color-purple-light: #a798af;
+  --color-purple: #97839f;
+  --color-purple-dark: #856d8f;
+  --color-spruce-light: #a6c2b3;
+  --color-spruce: #8bac9b;
+  --color-spruce-dark: #839f90;
+  --color-green-light: #749b7c;
+  --color-green: #698c6e;
+  --color-green-dark: #5b7961;
+}
+
+/* Replacing with other styles for accessibility */
+:focus,
+:focus-visible {
+  outline: none;
 }
