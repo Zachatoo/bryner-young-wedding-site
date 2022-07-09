@@ -14,7 +14,9 @@
   "dependencies": {
     "next": "latest",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-hook-form": "^7.33.1",
+    "react-tooltip": "^4.2.21"
   },
   "devDependencies": {
     "@testing-library/cypress": "^8.0.3",
