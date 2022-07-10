@@ -1,42 +1,22 @@
-import React, {
-  forwardRef,
-  PropsWithChildren,
-  ReactNode,
-  useImperativeHandle,
-} from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import type { ObjectSchema } from "yup";
-import type { AnyObject } from "yup/lib/types";
-
-export type FormHandle = {
-  reset: () => void;
-};
+import React from "react";
+import type { PropsWithChildren, ReactNode } from "react";
+import type { SubmitHandler, UseFormReturn } from "react-hook-form";
 
 interface Props {
-  defaultValues?: any;
   onSubmit: SubmitHandler<any>;
-  schema: ObjectSchema<AnyObject>;
+  form: UseFormReturn<any, object>;
 }
 
-function FormWrapped(
-  props: PropsWithChildren<Props>,
-  ref: React.ForwardedRef<FormHandle>
-) {
-  const { defaultValues, children, onSubmit, schema } = props;
+export function Form(props: PropsWithChildren<Props>) {
   const {
-    handleSubmit,
-    register,
-    reset,
-    formState: { errors },
-  } = useForm({
-    defaultValues,
-    resolver: schema ? yupResolver(schema) : undefined,
-  });
-
-  useImperativeHandle(ref, () => ({
-    reset,
-  }));
+    onSubmit,
+    form: {
+      handleSubmit,
+      register,
+      formState: { errors },
+    },
+    children,
+  } = props;
 
   function _recursiveMap(children: ReactNode, fn: Function): ReactNode {
     return React.Children.map(children, (child) => {
@@ -71,7 +51,3 @@ function FormWrapped(
     </form>
   );
 }
-
-export const Form = forwardRef<FormHandle, PropsWithChildren<Props>>(
-  FormWrapped
-);

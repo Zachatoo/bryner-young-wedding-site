@@ -1,11 +1,14 @@
 import type { NextPage } from "next";
-import { Head, Form, FormHandle, FormInput, Row, Col } from "components";
-import { SubmitHandler } from "react-hook-form";
-import { useRef } from "react";
+import { Head, Form, FormInput, Row, Col } from "components";
+import { useForm } from "react-hook-form";
+import type { SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { RSVPFormData, rsvpFormDataSchema } from "utils";
 
 const RSVPPage: NextPage = () => {
-  const formRef = useRef<FormHandle>(null);
+  const form = useForm({
+    resolver: yupResolver(rsvpFormDataSchema),
+  });
 
   const _onSubmit: SubmitHandler<RSVPFormData> = async (data) => {
     try {
@@ -18,7 +21,7 @@ const RSVPPage: NextPage = () => {
       });
       const parsedBody = await res.json();
       if (res.ok) {
-        formRef.current?.reset();
+        form.reset();
       } else {
         throw new Error(
           parsedBody.message || "An unexpected error has occured."
@@ -49,7 +52,7 @@ const RSVPPage: NextPage = () => {
         </div>
 
         <div className="px-2 py-3">
-          <Form onSubmit={_onSubmit} schema={rsvpFormDataSchema} ref={formRef}>
+          <Form form={form} onSubmit={_onSubmit}>
             <Row>
               <Col sm="1/2">
                 <FormInput name="name" label="Name" icon="user" />
