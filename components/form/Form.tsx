@@ -5,6 +5,9 @@ import React, {
   useImperativeHandle,
 } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import type { ObjectSchema } from "yup";
+import type { AnyObject } from "yup/lib/types";
 
 export type FormHandle = {
   reset: () => void;
@@ -13,19 +16,23 @@ export type FormHandle = {
 interface Props {
   defaultValues?: any;
   onSubmit: SubmitHandler<any>;
+  schema: ObjectSchema<AnyObject>;
 }
 
 function FormWrapped(
   props: PropsWithChildren<Props>,
   ref: React.ForwardedRef<FormHandle>
 ) {
-  const { defaultValues, children, onSubmit } = props;
+  const { defaultValues, children, onSubmit, schema } = props;
   const {
     handleSubmit,
     register,
     reset,
     formState: { errors },
-  } = useForm({ defaultValues });
+  } = useForm({
+    defaultValues,
+    resolver: schema ? yupResolver(schema) : undefined,
+  });
 
   useImperativeHandle(ref, () => ({
     reset,

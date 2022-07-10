@@ -2,26 +2,34 @@ import type { NextPage } from "next";
 import { Head, Form, FormHandle, FormInput, Row, Col } from "components";
 import { SubmitHandler } from "react-hook-form";
 import { useRef } from "react";
-
-interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  guestCount: string;
-  inviteCode: number;
-}
+import { RSVPFormData, rsvpFormDataSchema } from "utils";
 
 const RSVPPage: NextPage = () => {
   const formRef = useRef<FormHandle>(null);
 
-  const _onSubmit: SubmitHandler<FormData> = async (data) => {
+  const _onSubmit: SubmitHandler<RSVPFormData> = async (data) => {
     try {
-      await fetch("/api/rsvp", {
+      const res = await fetch("/api/rsvp", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(data),
       });
-      formRef.current?.reset();
-    } catch {}
+      const parsedBody = await res.json();
+      if (res.ok) {
+        formRef.current?.reset();
+      } else {
+        throw new Error(
+          parsedBody.message || "An unexpected error has occured."
+        );
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        console.error(err.message);
+      }
+      console.error(err);
+    }
   };
 
   return (
@@ -41,40 +49,10 @@ const RSVPPage: NextPage = () => {
         </div>
 
         <div className="px-2 py-3">
-          <Form onSubmit={_onSubmit} ref={formRef}>
+          <Form onSubmit={_onSubmit} schema={rsvpFormDataSchema} ref={formRef}>
             <Row>
               <Col sm="1/2">
-                <FormInput
-                  name="firstName"
-                  label="First name"
-                  icon="user"
-                  registerOptions={{
-                    required: true,
-                    maxLength: 100,
-                  }}
-                />
-              </Col>
-              <Col sm="1/2">
-                <FormInput
-                  name="lastName"
-                  label="Last name"
-                  icon="user"
-                  registerOptions={{
-                    required: true,
-                    maxLength: 100,
-                  }}
-                />
-              </Col>
-              <Col sm="1/2">
-                <FormInput
-                  name="email"
-                  label="Email"
-                  icon="envelope"
-                  registerOptions={{
-                    required: true,
-                    maxLength: 100,
-                  }}
-                />
+                <FormInput name="name" label="Name" icon="user" />
               </Col>
               <Col sm="1/2">
                 <FormInput
@@ -82,31 +60,15 @@ const RSVPPage: NextPage = () => {
                   label="Number of guests"
                   icon="users"
                   type="tel"
-                  registerOptions={{
-                    required: true,
-                    pattern: {
-                      value: /^[0-9]*$/,
-                      message: "Number of guests must be a number",
-                    },
-                    min: 1,
-                    max: 20,
-                  }}
                 />
               </Col>
+            </Row>
+            <Row>
               <Col sm="1/2">
                 <FormInput
-                  name="inviteCode"
-                  label="Invite code"
-                  icon="key"
-                  type="tel"
-                  registerOptions={{
-                    required: true,
-                    pattern: {
-                      value: /^[0-9]*$/,
-                      message: "Invite code must be a number",
-                    },
-                    maxLength: 5,
-                  }}
+                  name="email"
+                  label="Email (optional)"
+                  icon="envelope"
                 />
               </Col>
             </Row>

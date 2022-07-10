@@ -39,28 +39,7 @@ export function FormInput(props: Props) {
   } = props;
 
   function _getErrorMessage() {
-    if (!error) {
-      return null;
-    }
-    if (error.message) {
-      return error.message;
-    }
-    switch (error.type) {
-      case "required":
-        return `${label} is required`;
-      case "minLength":
-        return `${label} must be at least ${registerOptions?.minLength} characters`;
-      case "maxLength":
-        return `${label} must not exceed ${registerOptions?.maxLength} characters`;
-      case "min":
-        return `${label} must be at least ${registerOptions?.min}`;
-      case "max":
-        return `${label} must not exceed ${registerOptions?.max}`;
-      case "pattern":
-        return "Invalid pattern";
-      default:
-        return error.type;
-    }
+    return error?.message || null;
   }
 
   const Tag = inputType === "textarea" ? "textarea" : "input";
