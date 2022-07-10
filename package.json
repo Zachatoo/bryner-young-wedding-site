@@ -6,6 +6,7 @@
     "start": "next start",
     "test": "vitest",
     "test:ci": "vitest --watch=false",
+    "typecheck": "tsc",
     "lint": "next lint",
     "prepare": "husky install",
     "cypress:open": "cypress open",
