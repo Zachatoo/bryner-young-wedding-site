@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 const Icon = dynamic(() => import("../../components/Icon"), {
   ssr: false,
 });
-const ReactTooltip = dynamic(() => import("react-tooltip"), { ssr: false });
 
 interface Props {
   name: string;
@@ -38,43 +37,46 @@ export function FormInput(props: Props) {
     ...args
   } = props;
 
-  function _getErrorMessage() {
-    return error?.message || null;
-  }
-
   const Tag = inputType === "textarea" ? "textarea" : "input";
   const classes = classNames(
     "group flex w-full items-start px-3 py-1.5 border rounded-md",
     className
   );
+  const iconClasses = classNames(
+    {
+      "text-spruce group-hover:text-green-dark group-focus-within:text-green-dark":
+        !error,
+    },
+    { "text-red": error }
+  );
 
   return (
-    <div className={classes}>
-      {icon && (
-        <div className="flex my-auto pr-1.5">
-          <Icon type={icon} />
-        </div>
+    <>
+      <div className={classes}>
+        {icon && (
+          <div className="flex my-auto pr-1.5">
+            <Icon type={icon} className={iconClasses} />
+          </div>
+        )}
+        <Tag
+          id={name}
+          title={label}
+          name={name}
+          data-for={`React-tooltip-${name}`}
+          data-tip
+          className="w-full p-1 my-1"
+          aria-invalid={error ? "true" : "false"}
+          type={inputType}
+          placeholder={label ?? name}
+          {...register?.(name, registerOptions)}
+          {...args}
+        ></Tag>
+      </div>
+      {error && (
+        <span className="pl-1.5 text-sm text-left text-red">
+          {error.message}
+        </span>
       )}
-      <ReactTooltip
-        id={`React-tooltip-${name}`}
-        getContent={_getErrorMessage}
-        place="top"
-        type="error"
-        effect="solid"
-      />
-      <Tag
-        id={name}
-        title={label}
-        name={name}
-        data-for={`React-tooltip-${name}`}
-        data-tip
-        className="w-full p-1 my-1"
-        aria-invalid={error ? "true" : "false"}
-        type={inputType}
-        placeholder={label ?? name}
-        {...register?.(name, registerOptions)}
-        {...args}
-      ></Tag>
-    </div>
+    </>
   );
 }

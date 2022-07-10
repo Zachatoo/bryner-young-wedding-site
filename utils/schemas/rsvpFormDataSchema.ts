@@ -11,7 +11,7 @@ export const rsvpFormDataSchema = Yup.object().shape({
     .integer("Number of guests must be an integer.")
     .max(20, "Number of guests must not exceed ${max}.")
     .required("Number of guests is required.")
-    .typeError("Number of guests is required and must be a number."),
+    .typeError("Number of guests is required."),
   notes: Yup.string(),
 });
 

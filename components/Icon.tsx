@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-export type IconType = "user" | "users" | "envelope" | "key";
+export type IconType = "user" | "users" | "envelope" | "key" | "xmark";
 
 interface Props {
   type: IconType;
@@ -16,10 +16,7 @@ export function Icon({ type, className }: Props) {
     ></div>
   );
 
-  const classes = classNames(
-    "text-spruce group-hover:text-green-dark group-focus-within:text-green-dark w-5 h-5",
-    className
-  );
+  const classes = classNames("w-5 h-5", className);
 
   let result: JSX.Element;
 
@@ -79,6 +76,21 @@ export function Icon({ type, className }: Props) {
           {comment}
           <path
             d="M282.3 343.7L248.1 376.1C244.5 381.5 238.4 384 232 384H192V424C192 437.3 181.3 448 168 448H128V488C128 501.3 117.3 512 104 512H24C10.75 512 0 501.3 0 488V408C0 401.6 2.529 395.5 7.029 391L168.3 229.7C162.9 212.8 160 194.7 160 176C160 78.8 238.8 0 336 0C433.2 0 512 78.8 512 176C512 273.2 433.2 352 336 352C317.3 352 299.2 349.1 282.3 343.7zM376 176C398.1 176 416 158.1 416 136C416 113.9 398.1 96 376 96C353.9 96 336 113.9 336 136C336 158.1 353.9 176 376 176z"
+            fill="currentColor"
+          />
+        </svg>
+      );
+      break;
+    case "xmark":
+      result = (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 320 512"
+          className={classes}
+        >
+          {comment}
+          <path
+            d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
             fill="currentColor"
           />
         </svg>

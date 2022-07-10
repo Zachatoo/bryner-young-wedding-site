@@ -18,7 +18,6 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-hook-form": "^7.33.1",
-    "react-tooltip": "^4.2.21",
     "yup": "^0.32.11"
   },
   "devDependencies": {
