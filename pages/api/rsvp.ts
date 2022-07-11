@@ -24,7 +24,6 @@ export default async function handler(
     const guestListTableID = process.env.AIRTABLE_GUEST_TABLE || "";
     const nameKey = process.env.AIRTABLE_GUEST_TABLE_NAME || "";
     const emailKey = process.env.AIRTABLE_GUEST_TABLE_EMAIL || "";
-    const eventKey = process.env.AIRTABLE_GUEST_TABLE_EVENT || "";
     const countKey = process.env.AIRTABLE_GUEST_TABLE_COUNT || "";
     const notesKey = process.env.AIRTABLE_GUEST_TABLE_NOTES || "";
     const rsvpKey = process.env.AIRTABLE_GUEST_TABLE_RSVP || "";
@@ -38,7 +37,6 @@ export default async function handler(
           [emailKey]: body.email,
           [countKey]: body.guestCount,
           [notesKey]: body.notes,
-          [eventKey]: "Reception",
           [rsvpKey]: "Accepted",
         },
       },
