@@ -9,7 +9,7 @@
     "typecheck": "tsc",
     "lint": "next lint",
     "prepare": "husky install",
-    "cypress:open": "cypress open",
+    "cypress": "cypress open",
     "cypress:ci": "cypress run"
   },
   "dependencies": {
