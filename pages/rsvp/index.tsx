@@ -54,9 +54,15 @@ const RSVPPage: NextPage = () => {
         <div className="px-2 py-3">
           <Form form={form} onSubmit={_onSubmit}>
             <Row>
-              <Col sm="1/2">
-                <FormInput name="name" label="Name" icon="user" />
+              <Col>
+                <FormInput
+                  name="name"
+                  label="First and last name"
+                  icon="user"
+                />
               </Col>
+            </Row>
+            <Row>
               <Col sm="1/2">
                 <FormInput
                   name="guestCount"
@@ -65,8 +71,6 @@ const RSVPPage: NextPage = () => {
                   type="tel"
                 />
               </Col>
-            </Row>
-            <Row>
               <Col sm="1/2">
                 <FormInput
                   name="email"
