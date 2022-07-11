@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Head, Form, FormInput, Row, Col } from "components";
+import { Button, Head, Form, FormInput, Row, Col } from "components";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -75,12 +75,13 @@ const RSVPPage: NextPage = () => {
                 />
               </Col>
             </Row>
-            <button
-              className="mt-2 sm:mt-4 px-4 py-1.5 text-white rounded-md hover:bg-green focus-visible:bg-green bg-green-dark"
+            <Button
+              className="mt-2 sm:mt-4"
+              isSubmitting={form.formState.isSubmitting}
               type="submit"
             >
               RSVP
-            </button>
+            </Button>
           </Form>
         </div>
       </main>
