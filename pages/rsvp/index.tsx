@@ -4,11 +4,15 @@ import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RSVPFormData, rsvpFormDataSchema } from "utils";
+import { useRouter } from "next/router";
+import { LOCAL_STORAGE_KEYS, useLocalStorage } from "hooks";
 
 const RSVPPage: NextPage = () => {
   const form = useForm({
     resolver: yupResolver(rsvpFormDataSchema),
   });
+  const router = useRouter();
+  const [, setRsvpStatus] = useLocalStorage(LOCAL_STORAGE_KEYS.rsvp, false);
 
   const _onSubmit: SubmitHandler<RSVPFormData> = async (data) => {
     try {
@@ -21,7 +25,9 @@ const RSVPPage: NextPage = () => {
       });
       const parsedBody = await res.json();
       if (res.ok) {
+        setRsvpStatus(true);
         form.reset();
+        router.push("/");
       } else {
         throw new Error(
           parsedBody.message || "An unexpected error has occured."

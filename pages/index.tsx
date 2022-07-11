@@ -1,12 +1,15 @@
 import type { NextPage } from "next";
 import { Head } from "components";
 import dynamic from "next/dynamic";
+import { LOCAL_STORAGE_KEYS, useLocalStorage } from "hooks";
 
 const Countdown = dynamic(() => import("../components/countdown/Countdown"), {
   ssr: false,
 });
 
 const HomePage: NextPage = () => {
+  const [rsvpStatus] = useLocalStorage(LOCAL_STORAGE_KEYS.rsvp, false);
+
   const weddingDate = new Date(2022, 8, 9, 12, 0, 0);
   const dateFormatOptions: Intl.DateTimeFormatOptions = {
     month: "long",
@@ -28,8 +31,10 @@ const HomePage: NextPage = () => {
           <span className="text-xl sm:text-2xl">&</span>
           <span className="text-3xl sm:text-5xl">Zachary Matthew Young</span>
         </div>
-        <h1 className="pb-6 text-6.5xl sm:pb-16 sm:text-8xl font-great-vibes">
-          {"We're Getting Married!"}
+        <h1 className="pb-6 text-6.5xl sm:pb-16 sm:text-8xl font-great-vibes capitalize">
+          {rsvpStatus
+            ? "We'll see you at the wedding!"
+            : "We're getting married!"}
         </h1>
         <div className="pb-4 text-3xl sm:text-5xl font-great-vibes">
           {formattedWeddingDate}
