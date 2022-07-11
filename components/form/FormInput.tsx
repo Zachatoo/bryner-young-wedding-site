@@ -51,7 +51,7 @@ export function FormInput(props: Props) {
     <>
       <div className={classes}>
         {icon && (
-          <div className="flex my-auto pr-1.5">
+          <div className="my-auto pr-1.5">
             <Icon type={icon} className={iconClasses} />
           </div>
         )}

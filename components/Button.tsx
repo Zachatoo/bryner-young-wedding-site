@@ -15,7 +15,7 @@ export function Button({
 }: Props) {
   const isDisabled = disabled || isSubmitting;
   const classes = classNames(
-    "h-9 px-4 text-white rounded-md bg-green-dark",
+    "h-9 px-4 text-white rounded-md bg-green-dark shadow-md",
     {
       "hover:bg-green focus-visible:bg-green ease-in-out duration-300":
         !isDisabled,

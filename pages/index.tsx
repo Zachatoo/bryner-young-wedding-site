@@ -32,9 +32,7 @@ const HomePage: NextPage = () => {
           <span className="text-3xl sm:text-5xl">Zachary Matthew Young</span>
         </div>
         <h1 className="pb-6 text-6.5xl sm:pb-16 sm:text-8xl font-great-vibes capitalize">
-          {rsvpStatus
-            ? "We'll see you at the wedding!"
-            : "We're getting married!"}
+          {rsvpStatus ? "See you at the wedding!" : "We're getting married!"}
         </h1>
         <div className="pb-4 text-3xl sm:text-5xl font-great-vibes">
           {formattedWeddingDate}
