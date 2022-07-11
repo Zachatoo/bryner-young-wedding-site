@@ -15,10 +15,6 @@ interface Props {
   registerOptions?: RegisterOptions;
   error?: FieldError;
   type?: "text" | "number" | "tel" | "textarea";
-  pattern?: string;
-  min?: number;
-  max?: number;
-  required?: boolean;
   rows?: number;
   disabled?: boolean;
   className?: string;
@@ -62,8 +58,6 @@ export function FormInput(props: Props) {
           id={name}
           title={label}
           name={name}
-          data-for={`React-tooltip-${name}`}
-          data-tip
           className="w-full p-1 my-1"
           aria-invalid={error ? "true" : "false"}
           type={inputType}
@@ -73,7 +67,7 @@ export function FormInput(props: Props) {
         ></Tag>
       </div>
       {error && (
-        <span className="pl-1.5 text-sm text-left text-red">
+        <span role="alert" className="pl-1.5 text-sm text-left text-red">
           {error.message}
         </span>
       )}
