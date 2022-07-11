@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { IconType } from "components";
 import { FieldError, RegisterOptions, UseFormRegister } from "react-hook-form";
 import dynamic from "next/dynamic";
+import TextareaAutosize from "react-textarea-autosize";
 
 const Icon = dynamic(() => import("../../components/Icon"), {
   ssr: false,
@@ -33,7 +34,7 @@ export function FormInput(props: Props) {
     ...args
   } = props;
 
-  const Tag = inputType === "textarea" ? "textarea" : "input";
+  const Tag = inputType === "textarea" ? TextareaAutosize : "input";
   const classes = classNames(
     "group flex w-full items-start px-3 py-1.5 border rounded-md",
     className
