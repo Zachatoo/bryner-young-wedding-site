@@ -1,5 +1,6 @@
 import type { ButtonHTMLAttributes } from "react";
 import classNames from "classnames";
+import Icon from "./Icon";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   isSubmitting?: boolean;
@@ -27,16 +28,8 @@ export function Button({
     <button {...rest} className={classes} disabled={isDisabled}>
       {isSubmitting && (
         <>
-          <picture>
-            <img
-              src={iconPath}
-              alt=""
-              className="absolute motion-safe:animate-ping"
-            />
-          </picture>
-          <picture>
-            <img src={iconPath} alt="" className="opacity-95" />
-          </picture>
+          <Icon type="heart" className="absolute motion-safe:animate-ping" />
+          <Icon type="heart" className="opacity-90" />
         </>
       )}
       {!isSubmitting && children}

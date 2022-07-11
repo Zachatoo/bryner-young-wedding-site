@@ -75,6 +75,16 @@ const RSVPPage: NextPage = () => {
                 />
               </Col>
             </Row>
+            <Row>
+              <Col>
+                <FormInput
+                  name="notes"
+                  label="Additional notes (optional)"
+                  icon="pencil"
+                  type="textarea"
+                />
+              </Col>
+            </Row>
             <Button
               className="mt-2 sm:mt-4"
               isSubmitting={form.formState.isSubmitting}
