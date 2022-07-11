@@ -13,7 +13,6 @@ export function Button({
   children,
   ...rest
 }: Props) {
-  const iconPath = "/icons/heart.svg";
   const isDisabled = disabled || isSubmitting;
   const classes = classNames(
     "h-9 px-4 text-white rounded-md bg-green-dark",
