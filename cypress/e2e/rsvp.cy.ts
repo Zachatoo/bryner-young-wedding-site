@@ -21,7 +21,8 @@ describe("The RSVP Page", () => {
     cy.get("form").submit();
     cy.get("form").findByRole("button").should("be.disabled");
     cy.wait("@postRsvp");
-    cy.get("form").findByRole("button").should("not.be.disabled");
+    cy.findByText(/See you at the wedding!/i);
+    cy.findByText(/September 9, 2022/i);
   });
 
   it("successfully submits without email", () => {
@@ -29,7 +30,8 @@ describe("The RSVP Page", () => {
     cy.get("form").submit();
     cy.get("form").findByRole("button").should("be.disabled");
     cy.wait("@postRsvp");
-    cy.get("form").findByRole("button").should("not.be.disabled");
+    cy.findByText(/See you at the wedding!/i);
+    cy.findByText(/September 9, 2022/i);
   });
 
   it("shows required validation message for name", () => {
