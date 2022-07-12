@@ -7,8 +7,8 @@ export const rsvpFormDataSchema = Yup.object().shape({
     .required("Name is required."),
   email: Yup.string().email("Email must be a valid email."),
   guestCount: Yup.number()
-    .positive()
-    .integer("Number of guests must be an integer.")
+    .positive("Number of guests must be a positive integer.")
+    .integer("Number of guests must be a positive integer.")
     .max(20, "Number of guests must not exceed ${max}.")
     .required("Number of guests is required.")
     .typeError("Number of guests is required."),
