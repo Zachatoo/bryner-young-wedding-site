@@ -1,17 +1,17 @@
 describe("The Home Page", () => {
   it("successfully loads", () => {
     cy.visit("/");
-    cy.findByText(/Mary Katherine Bryner/i).should("exist");
-    cy.findByText(/Zachary Matthew Young/i).should("exist");
-    cy.findByText(/We\'re Getting Married!/i).should("exist");
-    cy.findByText(/September 9, 2022/i).should("exist");
-    cy.findByTestId("countdown-days").should("exist");
-    cy.findByTestId("countdown-hours").should("exist");
-    cy.findByTestId("countdown-minutes").should("exist");
-    cy.findByTestId("countdown-seconds").should("exist");
-    cy.findByText(/days/i).should("exist");
-    cy.findByText(/hours/i).should("exist");
-    cy.findByText(/minutes/i).should("exist");
-    cy.findByText(/seconds/i).should("exist");
+    cy.findByText(/Mary Katherine Bryner/i);
+    cy.findByText(/Zachary Matthew Young/i);
+    cy.findByText(/We\'re Getting Married!/i);
+    cy.findByText(/September 9, 2022/i);
+    cy.findByTestId("countdown-days");
+    cy.findByTestId("countdown-hours");
+    cy.findByTestId("countdown-minutes");
+    cy.findByTestId("countdown-seconds");
+    cy.findByText(/days/i);
+    cy.findByText(/hours/i);
+    cy.findByText(/minutes/i);
+    cy.findByText(/seconds/i);
   });
 });

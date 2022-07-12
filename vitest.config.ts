@@ -15,6 +15,7 @@ export default defineConfig({
       components: path.resolve(__dirname, "components"),
       hooks: path.resolve(__dirname, "hooks"),
       styles: path.resolve(__dirname, "styles"),
+      utils: path.resolve(__dirname, "utils"),
     },
   },
 });

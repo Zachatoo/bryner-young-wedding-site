@@ -52,6 +52,9 @@ module.exports = {
         DEFAULT: "var(--color-green)",
         dark: "var(--color-green-dark)",
       },
+      red: {
+        DEFAULT: "var(--color-red)",
+      },
     },
   },
   plugins: [],
