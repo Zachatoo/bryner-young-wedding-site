@@ -99,7 +99,7 @@ const RSVPPage: NextPage = () => {
               <Col>
                 <FormInput
                   name="notes"
-                  label="Additional notes (optional)"
+                  label="Additional notes (dietary restrictions, etc)"
                   icon="pencil"
                   type="textarea"
                 />
