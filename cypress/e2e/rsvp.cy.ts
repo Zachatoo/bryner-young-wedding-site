@@ -46,6 +46,20 @@ describe("The RSVP Page", () => {
       .findByText(/Name is required/i);
   });
 
+  it("shows max length validation message for name", () => {
+    const now = Date.now();
+    const mockFormData = {
+      name: "this is a very very very very very very very very very very very very very very very very very very long name",
+      guestCount: 1,
+      email: `test+${now}@test.com`,
+      notes: `${now} notes`,
+    } as RSVPFormData;
+    cy.submitRsvpForm(mockFormData);
+    cy.get("form")
+      .findByRole("alert")
+      .findByText(/Is your name really that long/i);
+  });
+
   it("shows required validation message for guest count", () => {
     const now = Date.now();
     const mockFormData = {
@@ -70,7 +84,7 @@ describe("The RSVP Page", () => {
     cy.submitRsvpForm(mockFormData);
     cy.get("form")
       .findByRole("alert")
-      .findByText(/Number of guests must not exceed 20/i);
+      .findByText(/Please don't bring that many people/i);
   });
 
   it("shows positive integer validation message for guest count", () => {
@@ -84,7 +98,7 @@ describe("The RSVP Page", () => {
     cy.submitRsvpForm(mockFormData);
     cy.get("form")
       .findByRole("alert")
-      .findByText(/Number of guests must be a positive integer/i);
+      .findByText(/That's.* not possible/i);
   });
 
   it("shows invalid validation message for email", () => {

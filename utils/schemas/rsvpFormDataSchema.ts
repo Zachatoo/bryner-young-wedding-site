@@ -3,13 +3,13 @@ import * as Yup from "yup";
 export const rsvpFormDataSchema = Yup.object().shape({
   name: Yup.string()
     .min(1, "Name is required.")
-    .max(100, "Name must not exceed ${max} characters.")
+    .max(100, "Is your name really that long?")
     .required("Name is required."),
   email: Yup.string().email("Email must be a valid email."),
   guestCount: Yup.number()
-    .positive("Number of guests must be a positive integer.")
-    .integer("Number of guests must be a positive integer.")
-    .max(20, "Number of guests must not exceed ${max}.")
+    .min(1, "That's... not possible.")
+    .integer("Number of guests must be an integer.")
+    .max(20, "Seriously? Please don't bring that many people to our wedding.")
     .required("Number of guests is required.")
     .typeError("Number of guests is required."),
   notes: Yup.string(),
