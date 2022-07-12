@@ -35,4 +35,42 @@
 //     }
 //   }
 // }
+
+import { RSVPFormData } from "../../utils";
 import "@testing-library/cypress/add-commands";
+
+Cypress.Commands.add("submitRsvpForm", ({ name, guestCount, email, notes }) => {
+  cy.visit("/rsvp");
+  cy.findByText(/RSVP for the wedding of/i);
+  cy.findByText(/Mary Katherine Bryner/i);
+  cy.findByText(/Zachary Matthew Young/i);
+  cy.get("form").findByPlaceholderText(/Name/i);
+  cy.get("form").findByPlaceholderText(/Number of guests/i);
+  cy.get("form").findByPlaceholderText(/Email/i);
+  cy.get("form").findByRole("button", { name: /RSVP/i });
+  if (name) {
+    cy.get("form").findByPlaceholderText(/Name/i).type(name);
+  }
+  if (guestCount) {
+    cy.get("form")
+      .findByPlaceholderText(/Number of guests/i)
+      .type(guestCount.toString());
+  }
+  if (email) {
+    cy.get("form").findByPlaceholderText(/Email/i).type(email);
+  }
+  if (notes) {
+    cy.get("form")
+      .findByPlaceholderText(/Additional notes/i)
+      .type(notes);
+  }
+  cy.get("form").submit();
+});
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      submitRsvpForm(formData: RSVPFormData): Chainable<void>;
+    }
+  }
+}
