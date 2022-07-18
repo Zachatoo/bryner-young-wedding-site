@@ -16,7 +16,9 @@ describe("The RSVP Page", () => {
     cy.submitRsvpForm(mockFormData);
     cy.get("form").findByRole("button").should("be.disabled");
     cy.wait("@postRsvp");
-    cy.findByText(/See you at the wedding!/i);
+    cy.findByText(/See you at the wedding!/i, {
+      ignore: "script, style, .hidden",
+    });
     cy.findByText(/September 9, 2022/i);
   });
 
@@ -29,7 +31,9 @@ describe("The RSVP Page", () => {
     cy.submitRsvpForm(mockFormData);
     cy.get("form").findByRole("button").should("be.disabled");
     cy.wait("@postRsvp");
-    cy.findByText(/See you at the wedding!/i);
+    cy.findByText(/See you at the wedding!/i, {
+      ignore: "script, style, .hidden",
+    });
     cy.findByText(/September 9, 2022/i);
   });
 
