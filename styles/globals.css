@@ -18,10 +18,23 @@
   --color-green: #698c6e;
   --color-green-dark: #5b7961;
   --color-red: #be6464;
+  --color-black-transparent: rgb(0, 0, 0, 70%);
 }
 
 /* Replacing with other styles for accessibility */
 :focus,
 :focus-visible {
   outline: none;
+}
+
+.banner {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.banner > * {
+  grid-area: 1 / 1 / 2 / 2;
+  text-shadow: 1px 1px black;
 }

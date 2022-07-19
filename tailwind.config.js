@@ -55,6 +55,10 @@ module.exports = {
       red: {
         DEFAULT: "var(--color-red)",
       },
+      black: {
+        DEFAULT: "black",
+        transparent: "var(--color-black-transparent)",
+      },
     },
   },
   plugins: [],
