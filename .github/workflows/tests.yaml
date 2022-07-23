@@ -9,6 +9,7 @@ on:
   schedule:
     - cron: "0 4 * * *"
 env:
+  BASE_URL: ${{ secrets.BASE_URL }}
   AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
   AIRTABLE_BASE: ${{ secrets.AIRTABLE_BASE }}
   AIRTABLE_GUEST_TABLE: ${{ secrets.AIRTABLE_GUEST_TABLE }}
@@ -18,6 +19,9 @@ env:
   AIRTABLE_GUEST_TABLE_COUNT: ${{ secrets.AIRTABLE_GUEST_TABLE_COUNT }}
   AIRTABLE_GUEST_TABLE_NOTES: ${{ secrets.AIRTABLE_GUEST_TABLE_NOTES }}
   AIRTABLE_GUEST_TABLE_RSVP: ${{ secrets.AIRTABLE_GUEST_TABLE_RSVP }}
+  SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+  SENDGRID_TEMPLATE_RSVP_CONFIRMATION: ${{ secrets.SENDGRID_TEMPLATE_RSVP_CONFIRMATION }}
+  EMAIL_RSVP: ${{ secrets.EMAIL_RSVP }}
 jobs:
   typecheck:
     runs-on: ubuntu-latest
