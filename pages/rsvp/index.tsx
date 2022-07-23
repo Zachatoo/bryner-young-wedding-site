@@ -1,21 +1,16 @@
 import type { NextPage } from "next";
-import { Alert, Button, Head, Form, FormInput, Row, Col } from "components";
-import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
+import { Button, Head, Form, FormInput, Row, Col } from "components";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RSVPFormData, rsvpFormDataSchema } from "utils";
 import { useRouter } from "next/router";
-import { LOCAL_STORAGE_KEYS, useLocalStorage } from "hooks";
 
 const RSVPPage: NextPage = () => {
   const form = useForm({
     resolver: yupResolver(rsvpFormDataSchema),
   });
   const router = useRouter();
-  const [rsvpStatus, setRsvpStatus] = useLocalStorage(
-    LOCAL_STORAGE_KEYS.rsvp,
-    false
-  );
 
   const _onSubmit: SubmitHandler<RSVPFormData> = async (data) => {
     try {
@@ -28,9 +23,8 @@ const RSVPPage: NextPage = () => {
       });
       const parsedBody = await res.json();
       if (res.ok) {
-        setRsvpStatus(true);
         form.reset();
-        router.push("/");
+        router.push("/?rsvp=success");
       } else {
         throw new Error(
           parsedBody.message || "An unexpected error has occured."
@@ -59,13 +53,6 @@ const RSVPPage: NextPage = () => {
             <span className="text-3xl sm:text-5xl">Zachary Matthew Young</span>
           </div>
         </div>
-
-        {rsvpStatus && (
-          <Alert onClose={() => setRsvpStatus(false)}>
-            <div>{"We've already received your RSVP,"}</div>
-            <div>{"we'll see you at the wedding!"}</div>
-          </Alert>
-        )}
 
         <div className="px-2 py-3">
           <Form form={form} onSubmit={_onSubmit}>

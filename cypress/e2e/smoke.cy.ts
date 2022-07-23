@@ -11,8 +11,8 @@ describe("The Home Page", () => {
       cy.visit("/");
       cy.findByText(/Mary Katherine Bryner/i);
       cy.findByText(/Zachary Matthew Young/i);
-      cy.findByText(/We\'re Getting Married!/i, {
-        ignore: "script, style, .hidden",
+      cy.findByRole("heading", {
+        name: /We\'re Getting Married!/i,
       });
       cy.findByText(/September 9, 2022/i);
       cy.findByTestId("countdown-days");

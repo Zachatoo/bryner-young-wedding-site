@@ -1,22 +1,28 @@
 import type { NextPage } from "next";
 import { Head } from "components";
 import dynamic from "next/dynamic";
-import {
-  LOCAL_STORAGE_KEYS,
-  useIntersectionObserver,
-  useLocalStorage,
-} from "hooks";
+import { useIntersectionObserver } from "hooks";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const Countdown = dynamic(() => import("../components/countdown/Countdown"), {
   ssr: false,
 });
 
 const HomePage: NextPage = () => {
-  const [rsvpStatus] = useLocalStorage(LOCAL_STORAGE_KEYS.rsvp, false);
+  const [hasRsvpd, setHasRsvpd] = useState(false);
   const [proposalRef, proposalIsVisible] = useIntersectionObserver({
     threshold: 0.25,
   });
+  const router = useRouter();
+
+  useEffect(() => {
+    const { rsvp } = router.query;
+    setHasRsvpd(rsvp === "success");
+    router.replace("/", undefined, { shallow: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const weddingDate = new Date(2022, 8, 9, 12, 0, 0);
   const dateFormatOptions: Intl.DateTimeFormatOptions = {
@@ -28,7 +34,7 @@ const HomePage: NextPage = () => {
     "en-us",
     dateFormatOptions
   ).format(weddingDate);
-  const bannerText = rsvpStatus
+  const bannerText = hasRsvpd
     ? "See you at the wedding!"
     : "We're getting married!";
 

@@ -14,36 +14,45 @@ describe("Countdown", () => {
     vi.useRealTimers();
   });
 
-  it("handles days, hours, minutes, and seconds", () => {
-    const mockDate = new Date(2022, 8, 9, 0, 0, 0);
-    vi.setSystemTime(mockDate);
-    const mockTargetDate = new Date(2022, 8, 10, 1, 2, 3);
-    render(<Countdown targetTime={mockTargetDate} />);
+  it.each([
+    [new Date(2022, 8, 9, 0, 0, 0), new Date(2022, 8, 10, 1, 2, 3), 1, 1, 2, 3],
+    [
+      new Date(2022, 8, 8, 12, 0, 0),
+      new Date(2022, 8, 9, 12, 0, 0),
+      1,
+      0,
+      0,
+      0,
+    ],
+    [
+      new Date(2022, 8, 8, 12, 0, 1),
+      new Date(2022, 8, 9, 12, 0, 0),
+      0,
+      23,
+      59,
+      59,
+    ],
+  ])(
+    "handles days, hours, minutes, and seconds",
+    (
+      mockDate,
+      mockTargetDate,
+      expectedDays,
+      expectedHours,
+      expectedMinutes,
+      expectedSeconds
+    ) => {
+      vi.setSystemTime(mockDate);
+      render(<Countdown targetTime={mockTargetDate} />);
 
-    const daysValue = screen.getByTestId("countdown-days").innerHTML;
-    const hoursValue = screen.getByTestId("countdown-hours").innerHTML;
-    const minutesValue = screen.getByTestId("countdown-minutes").innerHTML;
-    const secondsValue = screen.getByTestId("countdown-seconds").innerHTML;
-    expect(daysValue).toEqual("1");
-    expect(hoursValue).toEqual("1");
-    expect(minutesValue).toEqual("2");
-    expect(secondsValue).toEqual("3");
-  });
-
-  // Skipping as this won't work in a UTC server
-  it.skip("handles timezone changes", () => {
-    const mockDate = new Date(2022, 8, 9, 0, 0, 0);
-    vi.setSystemTime(mockDate);
-    const mockTargetDate = new Date(2022, 10, 9, 0, 0, 0);
-    render(<Countdown targetTime={mockTargetDate} />);
-
-    const daysValue = screen.getByTestId("countdown-days").innerHTML;
-    const hoursValue = screen.getByTestId("countdown-hours").innerHTML;
-    const minutesValue = screen.getByTestId("countdown-minutes").innerHTML;
-    const secondsValue = screen.getByTestId("countdown-seconds").innerHTML;
-    expect(daysValue).toEqual("61");
-    expect(hoursValue).toEqual("1"); // add one hour due to change in timezone
-    expect(minutesValue).toEqual("0");
-    expect(secondsValue).toEqual("0");
-  });
+      const daysValue = screen.getByTestId("countdown-days").innerHTML;
+      const hoursValue = screen.getByTestId("countdown-hours").innerHTML;
+      const minutesValue = screen.getByTestId("countdown-minutes").innerHTML;
+      const secondsValue = screen.getByTestId("countdown-seconds").innerHTML;
+      expect(daysValue).toEqual(expectedDays.toString());
+      expect(hoursValue).toEqual(expectedHours.toString());
+      expect(minutesValue).toEqual(expectedMinutes.toString());
+      expect(secondsValue).toEqual(expectedSeconds.toString());
+    }
+  );
 });
