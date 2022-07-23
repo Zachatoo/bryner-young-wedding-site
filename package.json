@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.5",
+    "@sendgrid/mail": "^7.7.0",
     "airtable": "^0.11.4",
     "next": "latest",
     "react": "18.1.0",
