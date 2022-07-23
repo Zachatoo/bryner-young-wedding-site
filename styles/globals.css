@@ -27,7 +27,12 @@
   outline: none;
 }
 
+.text-shadow {
+  text-shadow: 1px 1px black;
+}
+
 .banner {
+  @apply relative flex flex-col items-center justify-center w-screen h-[300px] sm:h-[700px] pb-4 sm:pb-8;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -36,5 +41,20 @@
 }
 .banner > * {
   grid-area: 1 / 1 / 2 / 2;
-  text-shadow: 1px 1px black;
+}
+
+.story {
+  @apply flex justify-center px-4 py-6 transition duration-500 ease-in-out sm:px-12 sm:py-8 bg-spruce-light;
+}
+.story > div {
+  @apply max-w-3xl my-auto transition-transform duration-1000 ease-in-out motion-reduce:transition-none;
+}
+.story h2 {
+  @apply text-5xl capitalize font-great-vibes;
+}
+.story p {
+  @apply py-1 indent-4 sm:indent-6;
+}
+.story a {
+  @apply underline underline-offset-4;
 }
