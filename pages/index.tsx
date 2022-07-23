@@ -1,15 +1,24 @@
 import type { NextPage } from "next";
 import { Head } from "components";
 import dynamic from "next/dynamic";
-import { LOCAL_STORAGE_KEYS, useLocalStorage } from "hooks";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const Countdown = dynamic(() => import("../components/countdown/Countdown"), {
   ssr: false,
 });
 
 const HomePage: NextPage = () => {
-  const [rsvpStatus] = useLocalStorage(LOCAL_STORAGE_KEYS.rsvp, false);
+  const [hasRsvpd, setHasRsvpd] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const { rsvp } = router.query;
+    setHasRsvpd(rsvp === "success");
+    router.replace("/", undefined, { shallow: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const weddingDate = new Date(2022, 8, 9, 12, 0, 0);
   const dateFormatOptions: Intl.DateTimeFormatOptions = {
@@ -36,11 +45,11 @@ const HomePage: NextPage = () => {
             priority
           />
           <h1 className="hidden sm:block z-10 mt-auto pb-0 text-6.5xl sm:pb-8 text-white sm:text-8xl font-great-vibes capitalize">
-            {rsvpStatus ? "See you at the wedding!" : "We're getting married!"}
+            {hasRsvpd ? "See you at the wedding!" : "We're getting married!"}
           </h1>
         </div>
         <h1 className="block sm:hidden mt-auto pb-6 text-6.5xl sm:pb-8 sm:text-8xl font-great-vibes capitalize">
-          {rsvpStatus ? "See you at the wedding!" : "We're getting married!"}
+          {hasRsvpd ? "See you at the wedding!" : "We're getting married!"}
         </h1>
         <div className="flex flex-col pb-8 text-center sm:pb-12 font-great-vibes">
           <span className="text-3xl sm:text-5xl">Mary Katherine Bryner</span>

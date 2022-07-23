@@ -16,10 +16,14 @@ describe("The RSVP Page", () => {
     cy.submitRsvpForm(mockFormData);
     cy.get("form").findByRole("button").should("be.disabled");
     cy.wait("@postRsvp");
-    cy.findByText(/See you at the wedding!/i, {
-      ignore: "script, style, .hidden",
+    cy.findByRole("heading", {
+      name: /See you at the wedding!/i,
     });
     cy.findByText(/September 9, 2022/i);
+    cy.visit("/");
+    cy.findByRole("heading", {
+      name: /We\'re Getting Married!/i,
+    });
   });
 
   it("successfully submits with required fields only", () => {
@@ -31,10 +35,14 @@ describe("The RSVP Page", () => {
     cy.submitRsvpForm(mockFormData);
     cy.get("form").findByRole("button").should("be.disabled");
     cy.wait("@postRsvp");
-    cy.findByText(/See you at the wedding!/i, {
-      ignore: "script, style, .hidden",
+    cy.findByRole("heading", {
+      name: /See you at the wedding!/i,
     });
     cy.findByText(/September 9, 2022/i);
+    cy.visit("/");
+    cy.findByRole("heading", {
+      name: /We\'re Getting Married!/i,
+    });
   });
 
   it("shows required validation message for name", () => {
