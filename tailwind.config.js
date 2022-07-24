@@ -59,6 +59,9 @@ module.exports = {
         DEFAULT: "black",
         transparent: "var(--color-black-transparent)",
       },
+      gray: {
+        DEFAULT: "var(--color-gray)",
+      },
     },
   },
   plugins: [],

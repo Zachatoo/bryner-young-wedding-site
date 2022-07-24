@@ -1,6 +1,15 @@
 import type { NextPage } from "next";
 import type { SubmitHandler } from "react-hook-form";
-import { Button, Head, Form, FormInput, Row, Col } from "components";
+import {
+  Button,
+  Head,
+  Form,
+  FormInput,
+  Radio,
+  Row,
+  Col,
+  RadioGroup,
+} from "components";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RSVPFormData, rsvpFormDataSchema } from "utils";
@@ -24,7 +33,8 @@ const RSVPPage: NextPage = () => {
       const parsedBody = await res.json();
       if (res.ok) {
         form.reset();
-        router.push("/?rsvp=success");
+        const route = data.rsvpStatus === "Accepted" ? "/?rsvp=success" : "/";
+        router.push(route);
       } else {
         throw new Error(
           parsedBody.message || "An unexpected error has occured."
@@ -38,6 +48,9 @@ const RSVPPage: NextPage = () => {
     }
   };
 
+  const rsvpStatus = form.watch("rsvpStatus");
+  const isRsvping = rsvpStatus === "Accepted";
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head description="RSVP to the Bryner-Young wedding!"></Head>
@@ -49,7 +62,7 @@ const RSVPPage: NextPage = () => {
           </h1>
           <div className="flex flex-col text-center font-great-vibes">
             <span className="text-3xl sm:text-5xl">Mary Katherine Bryner</span>
-            <span className="text-lg sm:text-2xl">&</span>
+            <span className="text-lg sm:text-2xl">&amp;</span>
             <span className="text-3xl sm:text-5xl">Zachary Matthew Young</span>
           </div>
         </div>
@@ -57,44 +70,63 @@ const RSVPPage: NextPage = () => {
         <div className="px-2 py-3">
           <Form form={form} onSubmit={_onSubmit}>
             <Row>
-              <Col>
+              <Col sm="1/2">
                 <FormInput
                   name="name"
                   label="First and last name"
                   icon="user"
                 />
               </Col>
-            </Row>
-            <Row>
               <Col sm="1/2">
-                <FormInput
-                  name="guestCount"
-                  label="Number of guests"
-                  icon="users"
-                  type="tel"
-                />
-              </Col>
-              <Col sm="1/2">
-                <FormInput
-                  name="email"
-                  label="Email (optional)"
-                  icon="envelope"
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <FormInput
-                  name="notes"
-                  label="Additional notes (dietary restrictions, etc)"
-                  icon="pencil"
-                  type="textarea"
-                />
+                <RadioGroup>
+                  <Radio
+                    name="rsvpStatus"
+                    value="Accepted"
+                    label="I can make it 😍"
+                  />
+                  <Radio
+                    name="rsvpStatus"
+                    value="Rejected"
+                    label="I can't make it 😔"
+                  />
+                </RadioGroup>
               </Col>
             </Row>
+            {isRsvping && (
+              <>
+                <Row>
+                  <Col sm="1/2">
+                    <FormInput
+                      name="guestCount"
+                      label="Number of guests"
+                      icon="users"
+                      type="tel"
+                    />
+                  </Col>
+                  <Col sm="1/2">
+                    <FormInput
+                      name="email"
+                      label="Email (optional)"
+                      icon="envelope"
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <FormInput
+                      name="notes"
+                      label="Additional notes (dietary restrictions, etc)"
+                      icon="pencil"
+                      type="textarea"
+                    />
+                  </Col>
+                </Row>
+              </>
+            )}
             <Button
               className="mt-2 sm:mt-4"
               isSubmitting={form.formState.isSubmitting}
+              disabled={!rsvpStatus}
               type="submit"
             >
               RSVP

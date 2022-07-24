@@ -49,9 +49,9 @@ async function _addToAirtable(body: RSVPFormData) {
       fields: {
         [nameKey]: body.name,
         [emailKey]: body.email,
-        [countKey]: body.guestCount,
+        [countKey]: body.guestCount || 0,
         [notesKey]: body.notes,
-        [rsvpKey]: "Accepted",
+        [rsvpKey]: body.rsvpStatus,
       },
     },
   ]);

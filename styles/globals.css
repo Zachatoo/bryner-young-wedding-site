@@ -19,6 +19,7 @@
   --color-green-dark: #5b7961;
   --color-red: #be6464;
   --color-black-transparent: rgb(0, 0, 0, 70%);
+  --color-gray: #9ca3af;
 }
 
 /* Replacing with other styles for accessibility */
@@ -37,4 +38,23 @@
 .banner > * {
   grid-area: 1 / 1 / 2 / 2;
   text-shadow: 1px 1px black;
+}
+
+/* Radio inputs */
+.radio-group input[type="radio"] + label {
+  @apply border-r;
+}
+.radio-group .radio-last input[type="radio"] + label {
+  @apply border-r-0;
+}
+
+.radio-group input[type="radio"]:checked + label {
+  background-color: var(--color-spruce);
+}
+
+.radio-group .radio-first > input[type="radio"] + label {
+  @apply rounded-l-md;
+}
+.radio-group .radio-last > input[type="radio"] + label {
+  @apply rounded-r-md;
 }
