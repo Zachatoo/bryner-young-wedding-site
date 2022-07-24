@@ -43,17 +43,17 @@ Cypress.Commands.add(
   "submitRsvpForm",
   ({ name, rsvpStatus, guestCount, email, notes }) => {
     cy.visit("/rsvp");
-    cy.findByText(/RSVP for the wedding of/i);
-    cy.findByText(/Mary Katherine Bryner/i);
-    cy.findByText(/Zachary Matthew Young/i);
-    cy.get("form").findByPlaceholderText(/Name/i);
-    cy.get("form").findByRole("button", { name: /RSVP/i });
+    cy.findByText(/RSVP for the wedding of/i).should("exist");
+    cy.findByText(/Mary Katherine Bryner/i).should("exist");
+    cy.findByText(/Zachary Matthew Young/i).should("exist");
+    cy.get("form").findByPlaceholderText(/Name/i).should("exist");
+    cy.get("form").findByRole("button", { name: /RSVP/i }).should("exist");
     if (name) {
       cy.get("form").findByPlaceholderText(/Name/i).type(name);
     }
     if (rsvpStatus) {
       const labelTextRegex =
-        rsvpStatus === "Accepted" ? /I can make it/i : /I can't make it/i;
+        rsvpStatus === "Accepted" ? /I can make it/i : /I can\'t make it/i;
       cy.get("form").findByText(labelTextRegex).click();
     }
     if (guestCount) {
