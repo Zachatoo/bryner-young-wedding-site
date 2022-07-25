@@ -22,7 +22,10 @@ export default async function handler(
     const body = await rsvpFormDataSchema.validate(req.body);
 
     await _addToAirtable(body);
-    await _sendConfirmationEmail(body);
+
+    if (body.rsvpStatus === "Accepted") {
+      await _sendConfirmationEmail(body);
+    }
   } catch (err) {
     console.error(err);
     res.status(400).json({ message: "An unexpected error has occured." });
