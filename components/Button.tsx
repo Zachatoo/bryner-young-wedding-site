@@ -20,6 +20,7 @@ export function Button({
       "hover:bg-green focus-visible:bg-green ease-in-out duration-300":
         !isDisabled,
     },
+    { "bg-green": isDisabled },
     className
   );
 

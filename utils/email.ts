@@ -1,5 +1,5 @@
 export function isValidEmail(email: string | undefined) {
-  if (!email) {
+  if (!email || email.match(/@test.com$/)) {
     return false;
   }
   var regex =
