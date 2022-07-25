@@ -32,7 +32,7 @@ export function Radio({
         name={name}
         value={value}
         id={value?.toString()}
-        className="hidden"
+        className="absolute opacity-0"
         {...register?.(name, registerOptions)}
         {...rest}
       />

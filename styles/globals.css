@@ -58,3 +58,9 @@
 .radio-group .radio-last > input[type="radio"] + label {
   @apply rounded-r-md;
 }
+
+.radio-group input[type="radio"]:focus + label,
+.radio-group input[type="radio"]:focus-visible + label,
+.radio-group input[type="radio"]:hover + label {
+  background-color: var(--color-green-light);
+}
