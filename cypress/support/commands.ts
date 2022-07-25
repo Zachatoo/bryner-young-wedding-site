@@ -54,7 +54,7 @@ Cypress.Commands.add(
     if (rsvpStatus) {
       const labelTextRegex =
         rsvpStatus === "Accepted" ? /I can make it/i : /I can\'t make it/i;
-      cy.get("form").findByText(labelTextRegex).click();
+      cy.get("form").findByLabelText(labelTextRegex).click();
     }
     if (guestCount) {
       cy.get("form")
