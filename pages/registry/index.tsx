@@ -59,7 +59,7 @@ const HomePage: NextPage = () => {
         />
 
         <div className="pb-4 text-lg text-center sm:text-xl sm:pb-6">
-          We&apos;re registered at
+          We are registered at
         </div>
         <div className="flex justify-center max-w-lg mx-auto">
           <div className="flex-grow text-center basis-0">
