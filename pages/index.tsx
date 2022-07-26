@@ -1,8 +1,7 @@
 import type { NextPage } from "next";
-import { Head, WeddingDate } from "components";
+import { Banner, BrideGroom, Head, WeddingDate } from "components";
 import dynamic from "next/dynamic";
 import { useIntersectionObserver } from "hooks";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -34,28 +33,13 @@ const HomePage: NextPage = () => {
       <Head></Head>
 
       <main className="w-full pb-8 sm:pb-16">
-        <div className="banner">
-          <Image
-            src="/images/home-banner.jpg"
-            alt="Zach and MK sitting on a log in the forest"
-            layout="fill"
-            objectFit="cover"
-            priority
-          />
-          <h1 className="px-8 text-center hidden sm:block z-10 mt-auto pb-0 text-6.5xl sm:pb-8 text-white text-shadow sm:text-8xl font-great-vibes capitalize">
-            {bannerText}
-          </h1>
-        </div>
+        <Banner
+          src="/images/home-banner.jpg"
+          alt="Zach and MK sitting on a log in the forest"
+          text={bannerText}
+        />
 
-        <h1 className="px-8 text-center block sm:hidden mt-auto pb-6 text-6.5xl sm:pb-8 sm:text-8xl font-great-vibes capitalize">
-          {bannerText}
-        </h1>
-
-        <div className="flex flex-col px-8 pb-8 text-center sm:pb-12 font-great-vibes">
-          <span className="text-3xl sm:text-5xl">Mary Katherine Bryner</span>
-          <span className="text-xl sm:text-2xl">&amp;</span>
-          <span className="text-3xl sm:text-5xl">Zachary Matthew Young</span>
-        </div>
+        <BrideGroom />
 
         <WeddingDate targetDate={weddingDate} />
         <Countdown
