@@ -2,6 +2,8 @@ export * from "./countdown";
 export * from "./form";
 export * from "./layout";
 export * from "./Alert";
+export * from "./Banner";
+export * from "./BrideGroom";
 export * from "./Button";
 export * from "./Head";
 export * from "./Icon";
