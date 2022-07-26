@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Head } from "components";
+import { Head, WeddingDate } from "components";
 import dynamic from "next/dynamic";
 import { useIntersectionObserver } from "hooks";
 import Image from "next/image";
@@ -25,15 +25,6 @@ const HomePage: NextPage = () => {
   }, []);
 
   const weddingDate = new Date(2022, 8, 9, 12, 0, 0);
-  const dateFormatOptions: Intl.DateTimeFormatOptions = {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  };
-  const formattedWeddingDate = Intl.DateTimeFormat(
-    "en-us",
-    dateFormatOptions
-  ).format(weddingDate);
   const bannerText = hasRsvpd
     ? "See you at the wedding!"
     : "We're getting married!";
@@ -66,9 +57,7 @@ const HomePage: NextPage = () => {
           <span className="text-3xl sm:text-5xl">Zachary Matthew Young</span>
         </div>
 
-        <div className="px-8 pb-4 text-3xl text-center sm:text-5xl font-great-vibes">
-          {formattedWeddingDate}
-        </div>
+        <WeddingDate targetDate={weddingDate} />
         <Countdown
           targetTime={weddingDate}
           className="flex justify-center pb-6 text-center sm:pb-8"
