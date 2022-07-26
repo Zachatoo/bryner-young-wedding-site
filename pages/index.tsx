@@ -46,7 +46,7 @@ const HomePage: NextPage = () => {
         <div className="banner">
           <Image
             src="/images/home-banner.jpg"
-            alt="Zach and MK on temple grounds"
+            alt="Zach and MK sitting on a log in the forest"
             layout="fill"
             objectFit="cover"
             priority
