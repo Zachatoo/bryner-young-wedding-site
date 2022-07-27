@@ -1,5 +1,11 @@
 import type { NextPage } from "next";
-import { Banner, BrideGroom, Head, WeddingDate } from "components";
+import {
+  Banner,
+  BrideGroomText,
+  Head,
+  RegistryLinksText,
+  WeddingDateText,
+} from "components";
 import dynamic from "next/dynamic";
 import { useIntersectionObserver } from "hooks";
 import { useRouter } from "next/router";
@@ -18,8 +24,10 @@ const HomePage: NextPage = () => {
 
   useEffect(() => {
     const { rsvp } = router.query;
-    setHasRsvpd(rsvp === "success");
-    router.replace("/", undefined, { shallow: true });
+    if (rsvp === "success") {
+      setHasRsvpd(true);
+      router.replace("/", undefined, { shallow: true });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -39,9 +47,9 @@ const HomePage: NextPage = () => {
           text={bannerText}
         />
 
-        <BrideGroom />
+        <BrideGroomText />
 
-        <WeddingDate targetDate={weddingDate} />
+        <WeddingDateText targetDate={weddingDate} />
         <Countdown
           targetTime={weddingDate}
           className="flex justify-center pb-6 text-center sm:pb-8"
@@ -109,6 +117,12 @@ const HomePage: NextPage = () => {
               said yes!
             </p>
           </div>
+        </div>
+
+        <div id="registry" className="max-w-3xl mx-auto">
+          <h2 className="py-4 text-center sm:py-6">Registry</h2>
+
+          <RegistryLinksText />
         </div>
       </main>
     </>

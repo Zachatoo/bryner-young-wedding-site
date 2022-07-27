@@ -28,6 +28,28 @@
   outline: none;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply capitalize font-great-vibes;
+}
+h1 {
+  @apply text-6.5xl sm:text-8xl;
+}
+h2 {
+  @apply text-5xl sm:text-6xl;
+}
+
+p {
+  @apply py-1 indent-4 sm:indent-6;
+}
+a {
+  @apply underline underline-offset-4;
+}
+
 .text-shadow {
   text-shadow: 1px 1px black;
 }
@@ -49,15 +71,6 @@
 }
 .story > div {
   @apply max-w-3xl my-auto transition-transform duration-1000 ease-in-out motion-reduce:transition-none;
-}
-.story h2 {
-  @apply text-5xl capitalize font-great-vibes;
-}
-.story p {
-  @apply py-1 indent-4 sm:indent-6;
-}
-a {
-  @apply underline underline-offset-4;
 }
 
 /* Radio inputs */

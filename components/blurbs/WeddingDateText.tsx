@@ -2,7 +2,7 @@ interface Props {
   targetDate: Date;
 }
 
-export function WeddingDate({ targetDate }: Props) {
+export function WeddingDateText({ targetDate }: Props) {
   const dateFormatOptions: Intl.DateTimeFormatOptions = {
     month: "long",
     day: "numeric",
