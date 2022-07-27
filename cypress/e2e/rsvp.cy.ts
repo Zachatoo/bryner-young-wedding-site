@@ -161,7 +161,8 @@ describe("The RSVP Page", () => {
       name: `Test ${now}`,
     } as RSVPFormData;
     cy.submitRsvpForm(mockFormData);
-    cy.get("form").findByRole("button").should("be.disabled");
+    cy.wait(300);
+    cy.get("form").findByRole("button").should("not.exist");
     cy.wrap(requestPerformed).should("be.false");
   });
 });

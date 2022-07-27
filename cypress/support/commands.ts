@@ -47,7 +47,6 @@ Cypress.Commands.add(
     cy.findByText(/Mary Katherine Bryner/i).should("exist");
     cy.findByText(/Zachary Matthew Young/i).should("exist");
     cy.get("form").findByPlaceholderText(/Name/i).should("exist");
-    cy.get("form").findByRole("button", { name: /RSVP/i }).should("exist");
     if (name) {
       cy.get("form").findByPlaceholderText(/Name/i).type(name);
     }
