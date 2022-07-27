@@ -6,7 +6,7 @@ const sizes = [
 
 describe("The Home Page", () => {
   sizes.forEach((size) => {
-    it(`successfully loads on ${size} screen`, () => {
+    it(`works on ${size} screen`, () => {
       cy.viewport(size[0], size[1]);
       cy.visit("/");
       cy.findByText(/Mary Katherine Bryner/i);
@@ -29,25 +29,19 @@ describe("The Home Page", () => {
         .should("be.visible");
     });
   });
-
-  it("has no broken links", () => {
-    cy.visit("/");
-    cy.get("a:not([href*='mailto:'])").each((page) => {
-      cy.request(page.prop("href"));
-    });
-  });
 });
 
-describe("The Registry Page", () => {
+describe("The 404 Page", () => {
   sizes.forEach((size) => {
-    it(`successfully loads on ${size} screen`, () => {
-      cy.viewport(size[0], size[1]);
-      cy.visit("/registry");
+    it(`works on ${size} screen`, () => {
+      cy.visit("/random-bad-url", { failOnStatusCode: false });
+      cy.findByText(/Not found/i);
+      cy.findByRole("link", { name: /Take me home/i }).click();
+      cy.findByText(/We\'re Getting Married!/i, {
+        ignore: "script, style, .hidden",
+      });
       cy.findByText(/Mary Katherine Bryner/i);
       cy.findByText(/Zachary Matthew Young/i);
-      cy.findByRole("heading", {
-        name: /Registry/i,
-      });
       cy.findByText(/September 9, 2022/i);
       cy.findByTestId("countdown-days");
       cy.findByTestId("countdown-hours");
@@ -57,16 +51,6 @@ describe("The Registry Page", () => {
       cy.findByText(/hours/i);
       cy.findByText(/minutes/i);
       cy.findByText(/seconds/i);
-      cy.findByText(/We are registered at/i);
-      cy.findByRole("link", { name: /Crate & Barrel/i });
-      cy.findByRole("link", { name: /Target/i });
-    });
-  });
-
-  it("has no broken links", () => {
-    cy.visit("/registry");
-    cy.get("a:not([href*='mailto:'])").each((page) => {
-      cy.request(page.prop("href"));
     });
   });
 });
