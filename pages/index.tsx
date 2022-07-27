@@ -119,11 +119,11 @@ const HomePage: NextPage = () => {
           </div>
         </div>
 
-        <div id="registry" className="max-w-3xl mx-auto">
+        {/* <div id="registry" className="max-w-3xl mx-auto">
           <h2 className="py-4 text-center sm:py-6">Registry</h2>
 
           <RegistryLinksText />
-        </div>
+        </div> */}
       </main>
     </>
   );
