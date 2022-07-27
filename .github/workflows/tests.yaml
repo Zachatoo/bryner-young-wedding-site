@@ -7,7 +7,7 @@ on:
     branches:
       - "main"
   schedule:
-    - cron: "0 4 * * *"
+    - cron: "0 8 * * *"
 env:
   BASE_URL: ${{ secrets.BASE_URL }}
   AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
