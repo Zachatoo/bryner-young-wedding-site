@@ -123,14 +123,15 @@ const RSVPPage: NextPage = () => {
                 </Row>
               </>
             )}
-            <Button
-              className="mt-2 sm:mt-4"
-              isSubmitting={form.formState.isSubmitting}
-              disabled={!rsvpStatus}
-              type="submit"
-            >
-              RSVP
-            </Button>
+            {rsvpStatus && (
+              <Button
+                className="mt-2 sm:mt-4"
+                isSubmitting={form.formState.isSubmitting}
+                type="submit"
+              >
+                RSVP
+              </Button>
+            )}
           </Form>
         </div>
       </main>
