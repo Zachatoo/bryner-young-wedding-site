@@ -18,7 +18,7 @@ const HomePage: NextPage = () => {
     threshold: 0.1,
   });
 
-  const weddingDate = new Date(2022, 8, 9, 12, 0, 0);
+  const weddingDate = new Date(process.env.NEXT_PUBLIC_WEDDING_DATE || "");
   const bannerText = "We're getting married!";
 
   return (

@@ -11,6 +11,8 @@ import {
   Col,
   RadioGroup,
   ValidationText,
+  BrideGroomText,
+  WeddingDateText,
 } from "components";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -21,6 +23,8 @@ const RSVPPage: NextPage = () => {
   const form = useForm({
     resolver: yupResolver(rsvpFormDataSchema),
   });
+  
+  const weddingDate = new Date(process.env.NEXT_PUBLIC_WEDDING_DATE || "");
 
   const _onSubmit: SubmitHandler<RSVPFormData> = async (data) => {
     try {
@@ -51,15 +55,13 @@ const RSVPPage: NextPage = () => {
       <Head description="RSVP to the Bryner-Young wedding!"></Head>
 
       <main className="flex flex-col flex-1 w-full max-w-3xl text-center px-auto">
-        <div className="px-8 py-4 sm:py-12">
-          <h1 className="pb-4 text-2xl sm:text-4xl sm:pb-8">
+        <div className="pt-4 sm:pt-12">
+          <h1 className="px-4 pb-4 text-2xl sm:text-4xl sm:pb-8">
             RSVP for the wedding of
           </h1>
-          <div className="flex flex-col text-center font-great-vibes">
-            <span className="text-3xl sm:text-5xl">Mary Katherine Bryner</span>
-            <span className="text-lg sm:text-2xl">&amp;</span>
-            <span className="text-3xl sm:text-5xl">Zachary Matthew Young</span>
-          </div>
+
+          <BrideGroomText />
+          <WeddingDateText targetDate={weddingDate} />
         </div>
 
         <div className="px-2 py-3">
