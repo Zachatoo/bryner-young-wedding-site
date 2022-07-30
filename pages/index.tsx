@@ -43,7 +43,7 @@ const HomePage: NextPage = () => {
       <main className="w-full pb-8 sm:pb-16">
         <Banner
           src="/images/home-banner.jpg"
-          alt="Zach and MK sitting on a log in the forest"
+          alt="Zach and MK walking through a meadow"
           text={bannerText}
         />
 
