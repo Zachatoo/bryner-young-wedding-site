@@ -18,7 +18,7 @@ const Countdown = dynamic(() => import("../components/countdown/Countdown"), {
 const HomePage: NextPage = () => {
   const [hasRsvpd, setHasRsvpd] = useState(false);
   const [proposalRef, proposalIsVisible] = useIntersectionObserver({
-    threshold: 0.25,
+    threshold: 0.1,
   });
   const router = useRouter();
 
