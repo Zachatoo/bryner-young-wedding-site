@@ -11,6 +11,7 @@ export const rsvpFormDataSchema = Yup.object().shape({
   email: Yup.string().email("Email must be a valid email."),
   guestCount: Yup.number()
     .nullable()
+    .transform((_, val) => (val ? Number(val) : null))
     .when("rsvpStatus", {
       is: "Accepted",
       then: Yup.number()
