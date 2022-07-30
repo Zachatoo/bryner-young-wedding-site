@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import type { SubmitHandler } from "react-hook-form";
+import type { ErrorOption, SubmitHandler } from "react-hook-form";
 import {
   Button,
   Head,
@@ -9,6 +9,7 @@ import {
   Row,
   Col,
   RadioGroup,
+  ValidationText,
 } from "components";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -41,10 +42,8 @@ const RSVPPage: NextPage = () => {
         );
       }
     } catch (err) {
-      if (err instanceof Error) {
-        console.error(err.message);
-      }
-      console.error(err);
+      let errorOption = err as ErrorOption;
+      form.setError("submission", errorOption);
     }
   };
 
@@ -124,13 +123,22 @@ const RSVPPage: NextPage = () => {
               </>
             )}
             {rsvpStatus && (
-              <Button
-                className="mt-2 sm:mt-4"
-                isSubmitting={form.formState.isSubmitting}
-                type="submit"
-              >
-                RSVP
-              </Button>
+              <>
+                <Button
+                  className="mt-2 sm:mt-4"
+                  isSubmitting={form.formState.isSubmitting}
+                  type="submit"
+                >
+                  RSVP
+                </Button>
+                {form.formState.errors.submission && (
+                  <div className="pt-2">
+                    <ValidationText>
+                      An unexpected error has occured. Please try again.
+                    </ValidationText>
+                  </div>
+                )}
+              </>
             )}
           </Form>
         </div>

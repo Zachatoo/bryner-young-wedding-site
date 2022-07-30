@@ -3,6 +3,7 @@ import { IconType } from "components";
 import { FieldError, RegisterOptions, UseFormRegister } from "react-hook-form";
 import dynamic from "next/dynamic";
 import TextareaAutosize from "react-textarea-autosize";
+import { ValidationText } from "./ValidationText";
 
 const Icon = dynamic(() => import("../../components/Icon"), {
   ssr: false,
@@ -67,11 +68,7 @@ export function FormInput(props: Props) {
           {...args}
         ></Tag>
       </div>
-      {error && (
-        <span role="alert" className="pl-1.5 text-sm text-left text-red">
-          {error.message}
-        </span>
-      )}
+      {error && <ValidationText>{error.message}</ValidationText>}
     </>
   );
 }
