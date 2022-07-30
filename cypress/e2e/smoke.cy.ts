@@ -24,7 +24,6 @@ describe("The Home Page", () => {
       cy.findByText(/minutes/i);
       cy.findByText(/seconds/i);
       cy.findByRole("heading", { name: /The Proposal/i })
-        .should("not.be.visible")
         .scrollIntoView()
         .should("be.visible");
     });
