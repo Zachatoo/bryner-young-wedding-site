@@ -8,33 +8,18 @@ import {
 } from "components";
 import dynamic from "next/dynamic";
 import { useIntersectionObserver } from "hooks";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 const Countdown = dynamic(() => import("../components/countdown/Countdown"), {
   ssr: false,
 });
 
 const HomePage: NextPage = () => {
-  const [hasRsvpd, setHasRsvpd] = useState(false);
   const [proposalRef, proposalIsVisible] = useIntersectionObserver({
     threshold: 0.1,
   });
-  const router = useRouter();
-
-  useEffect(() => {
-    const { rsvp } = router.query;
-    if (rsvp === "success") {
-      setHasRsvpd(true);
-      router.replace("/", undefined, { shallow: true });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const weddingDate = new Date(2022, 8, 9, 12, 0, 0);
-  const bannerText = hasRsvpd
-    ? "See you at the wedding!"
-    : "We're getting married!";
+  const bannerText = "We're getting married!";
 
   return (
     <>
