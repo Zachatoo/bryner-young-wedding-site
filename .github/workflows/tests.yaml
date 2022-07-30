@@ -10,6 +10,7 @@ on:
     - cron: "0 8 * * *"
 env:
   BASE_URL: ${{ secrets.BASE_URL }}
+  NEXT_PUBLIC_WEDDING_DATE: ${{ secrets.NEXT_PUBLIC_WEDDING_DATE }}
   AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
   AIRTABLE_BASE: ${{ secrets.AIRTABLE_BASE }}
   AIRTABLE_GUEST_TABLE: ${{ secrets.AIRTABLE_GUEST_TABLE }}
