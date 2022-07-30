@@ -52,6 +52,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: set timezone to MDT
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: "America/MDT"
       - name: Install modules
         run: npm i
       - name: Build
