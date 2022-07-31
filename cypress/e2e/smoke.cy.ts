@@ -24,8 +24,10 @@ describe("The Home Page", () => {
       cy.findByText(/minutes/i);
       cy.findByText(/seconds/i);
       cy.findByRole("heading", { name: /The Proposal/i })
-        .scrollIntoView()
+        .scrollIntoView({ duration: 300 })
         .should("be.visible");
+      cy.findByRole("heading", { name: /Photos/i }).should("be.visible");
+      cy.findByRole("heading", { name: /Registry/i }).should("be.visible");
     });
   });
 });
