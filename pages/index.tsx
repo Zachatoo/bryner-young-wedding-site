@@ -112,9 +112,11 @@ const HomePage: NextPage = () => {
           <Carousel imagePaths={engagementImagePaths} />
         </div>
 
-        <div id="registry" className="max-w-3xl px-4 py-4 mx-auto sm:py-6">
-          <h2>Registry</h2>
-          <RegistryLinksText />
+        <div className="bg-blue-light">
+          <div id="registry" className="max-w-3xl px-4 py-4 mx-auto sm:py-6">
+            <h2>Registry</h2>
+            <RegistryLinksText />
+          </div>
         </div>
       </main>
     </>
