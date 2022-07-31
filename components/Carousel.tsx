@@ -21,13 +21,27 @@ export function Carousel({ imagePaths }: Props) {
     }));
   }
 
+  function _renderThumbs() {
+    return imagePaths.map((fileName, i) => (
+      <div key={i} className="relative w-full h-20">
+        <Image
+          src={fileName}
+          layout="fill"
+          objectFit="contain"
+          alt="logo"
+        ></Image>
+      </div>
+    ));
+  }
+
   return (
     <>
       <ResponsiveCarousel
         onClickItem={_handleClickImage}
         useKeyboardArrows
+        swipeable
         showIndicators={false}
-        showThumbs={false}
+        renderThumbs={_renderThumbs}
         selectedItem={state.itemIndex}
       >
         {imagePaths.map((fileName) => (
@@ -46,6 +60,7 @@ export function Carousel({ imagePaths }: Props) {
           onClickItem={_handleClickImage}
           className="fixed top-0 left-0 z-50 w-screen h-screen my-auto bg-black-transparent"
           useKeyboardArrows
+          swipeable
           showIndicators={false}
           showThumbs={false}
           selectedItem={state.itemIndex}
