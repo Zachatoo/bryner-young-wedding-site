@@ -99,10 +99,10 @@ a {
 }
 
 /* Carousel */
-.carousel-root .carousel .thumb:focus {
+.carousel-root .carousel .thumb:focus,
+.carousel-root .carousel .thumb:hover {
   @apply border-spruce-light;
 }
-.carousel-root .carousel .thumb.selected,
-.carousel-root .carousel .thumb:hover {
+.carousel-root .carousel .thumb.selected {
   @apply border-green;
 }
