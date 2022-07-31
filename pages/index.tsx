@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import {
   Banner,
   BrideGroomText,
+  Carousel,
   Head,
   RegistryLinksText,
   WeddingDateText,
@@ -102,6 +103,11 @@ const HomePage: NextPage = () => {
               said yes!
             </p>
           </div>
+        </div>
+
+        <div className="max-w-3xl px-4 py-6 mx-auto sm:py-8">
+          <h2>Photos</h2>
+          <Carousel />
         </div>
 
         {/* <div id="registry" className="max-w-3xl mx-auto">
