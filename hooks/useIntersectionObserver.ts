@@ -22,7 +22,9 @@ export function useIntersectionObserver(options?: IntersectionObserverInit) {
 
   const _cb: IntersectionObserverCallback = (entries) => {
     const [entry] = entries;
-    setIsVisible(entry.isIntersecting);
+    if (entry.isIntersecting) {
+      setIsVisible(true);
+    }
   };
 
   return [ref, isVisible] as const;
