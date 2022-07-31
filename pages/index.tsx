@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import {
   Banner,
   BrideGroomText,
@@ -8,13 +8,32 @@ import {
   WeddingDateText,
 } from "components";
 import dynamic from "next/dynamic";
+import { promises as fs } from "fs";
+import path from "path";
 import { useIntersectionObserver } from "hooks";
 
 const Countdown = dynamic(() => import("../components/countdown/Countdown"), {
   ssr: false,
 });
 
-const HomePage: NextPage = () => {
+export const getStaticProps: GetStaticProps = async () => {
+  const imagesDirectory = path.join(process.cwd(), "public/images/engagements");
+  const filenames = await fs.readdir(imagesDirectory);
+
+  const imagePaths = filenames.map((filename) =>
+    path.join("/images/engagements", filename)
+  );
+
+  return {
+    props: {
+      imagePaths,
+    },
+  };
+};
+
+const HomePage: NextPage = ({
+  imagePaths,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [proposalRef, proposalIsVisible] = useIntersectionObserver({
     threshold: 0.1,
   });
@@ -107,7 +126,7 @@ const HomePage: NextPage = () => {
 
         <div className="max-w-3xl px-4 py-6 mx-auto sm:py-8">
           <h2>Photos</h2>
-          <Carousel />
+          <Carousel imagePaths={imagePaths} />
         </div>
 
         {/* <div id="registry" className="max-w-3xl mx-auto">
