@@ -23,7 +23,7 @@ const RSVPPage: NextPage = () => {
   const form = useForm({
     resolver: yupResolver(rsvpFormDataSchema),
   });
-  
+
   const weddingDate = new Date(process.env.NEXT_PUBLIC_WEDDING_DATE || "");
 
   const _onSubmit: SubmitHandler<RSVPFormData> = async (data) => {
@@ -70,9 +70,16 @@ const RSVPPage: NextPage = () => {
               <div className="pb-6 text-lg sm:text-xl">
                 Thank you for RSVPing!
               </div>
-              <Link href="/" className="text-lg">
-                Read our story
-              </Link>
+              <div className="pb-4">
+                <Link href="/" className="text-lg">
+                  Read our story
+                </Link>
+              </div>
+              <div>
+                <Link href="/#registry" className="text-lg">
+                  Registry
+                </Link>
+              </div>
             </div>
           ) : (
             <Form form={form} onSubmit={_onSubmit}>

@@ -97,3 +97,12 @@ a {
 .radio-group input[type="radio"]:hover + label {
   background-color: var(--color-green-light);
 }
+
+/* Carousel */
+.carousel-root .carousel .thumb:focus,
+.carousel-root .carousel .thumb:hover {
+  @apply border-spruce-light;
+}
+.carousel-root .carousel .thumb.selected {
+  @apply border-green;
+}
