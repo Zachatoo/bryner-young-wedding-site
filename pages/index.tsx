@@ -44,6 +44,7 @@ const HomePage: NextPage = () => {
 
         <div
           ref={proposalRef}
+          id="stories"
           className={`story ${proposalIsVisible ? "" : "opacity-0"}`}
         >
           <div
@@ -106,12 +107,12 @@ const HomePage: NextPage = () => {
           </div>
         </div>
 
-        <div className="max-w-3xl px-4 py-6 mx-auto sm:py-8">
+        <div id="photos" className="max-w-3xl px-4 pt-6 mx-auto sm:pt-8">
           <h2>Photos</h2>
           <Carousel imagePaths={engagementImagePaths} />
         </div>
 
-        <div id="registry" className="max-w-3xl px-4 mx-auto sm:py-8">
+        <div id="registry" className="max-w-3xl px-4 py-4 mx-auto sm:py-6">
           <h2>Registry</h2>
           <RegistryLinksText />
         </div>
