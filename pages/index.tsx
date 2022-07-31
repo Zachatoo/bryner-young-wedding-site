@@ -106,14 +106,14 @@ const HomePage: NextPage = () => {
           </div>
         </div>
 
-        <div id="photos" className="max-w-3xl px-4 pt-6 mx-auto sm:pt-8">
-          <h2>Photos</h2>
+        <div id="photos" className="max-w-3xl px-4 mx-auto">
+          <h2 className="pt-6 pb-4 text-center sm:pb-6 sm:pt-8">Photos</h2>
           <Carousel imagePaths={engagementImagePaths} />
         </div>
 
         <div className="bg-blue-light">
-          <div id="registry" className="max-w-3xl px-4 py-4 mx-auto sm:py-6">
-            <h2>Registry</h2>
+          <div id="registry" className="max-w-3xl px-4 mx-auto">
+            <h2 className="pt-6 pb-4 text-center sm:pb-6 sm:pt-8">Registry</h2>
             <RegistryLinksText />
           </div>
         </div>
