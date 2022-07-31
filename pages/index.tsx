@@ -100,9 +100,8 @@ const HomePage: NextPage = () => {
               responded with &quot;You know what else we should do?&quot;
               &quot;What?&quot; &quot;We should get married.&quot; &quot;Yeah we
               should!&quot; As I went to kneel on one knee she realized what was
-              happening and she said &quot;Is this really happening?&quot; I
-              pulled out the ring and I asked if she would marry me, and she
-              said yes!
+              happening and she said &quot;Wait, really?&quot; I pulled out the
+              ring and I asked if she would marry me, and she said yes!
             </p>
           </div>
         </div>
