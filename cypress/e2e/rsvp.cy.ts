@@ -24,9 +24,7 @@ describe("The RSVP Page", () => {
     cy.wait("@postRsvp");
     cy.findByText(/Thank you for RSVPing/i).should("be.visible");
     cy.findByRole("link", { name: /Read our story/i }).click();
-    cy.findByRole("heading", {
-      name: /We\'re Getting Married!/i,
-    }).should("be.visible");
+    cy.isHomePageValid();
   });
 
   it("successfully accepts with required fields only", () => {
@@ -41,9 +39,7 @@ describe("The RSVP Page", () => {
     cy.wait("@postRsvp");
     cy.findByText(/Thank you for RSVPing/i).should("be.visible");
     cy.findByRole("link", { name: /Read our story/i }).click();
-    cy.findByRole("heading", {
-      name: /We\'re Getting Married!/i,
-    }).should("be.visible");
+    cy.isHomePageValid();
   });
 
   it("successfully rejects with required fields only", () => {
@@ -57,9 +53,7 @@ describe("The RSVP Page", () => {
     cy.wait("@postRsvp");
     cy.findByText(/Thank you for RSVPing/i).should("be.visible");
     cy.findByRole("link", { name: /Read our story/i }).click();
-    cy.findByRole("heading", {
-      name: /We\'re Getting Married!/i,
-    }).should("be.visible");
+    cy.isHomePageValid();
   });
 
   it("shows required validation message for name", () => {

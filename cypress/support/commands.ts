@@ -38,46 +38,13 @@
 
 import { RSVPFormData } from "../../utils";
 import "@testing-library/cypress/add-commands";
-
-Cypress.Commands.add(
-  "submitRsvpForm",
-  ({ name, rsvpStatus, guestCount, email, notes }) => {
-    cy.visit("/rsvp");
-    cy.findByText(/RSVP for the wedding of/i).should("exist");
-    cy.findByText(/Mary Katherine Bryner/i).should("exist");
-    cy.findByText(/Zachary Matthew Young/i).should("exist");
-    cy.get("form").findByPlaceholderText(/Name/i).should("exist");
-    if (name) {
-      cy.get("form").findByPlaceholderText(/Name/i).type(name);
-    }
-    if (rsvpStatus) {
-      const labelTextRegex =
-        rsvpStatus === "Accepted" ? /I can make it/i : /I can\'t make it/i;
-      cy.get("form")
-        .findByLabelText(labelTextRegex)
-        .trigger("mouseover")
-        .click();
-    }
-    if (guestCount) {
-      cy.get("form")
-        .findByPlaceholderText(/Number of guests/i)
-        .type(guestCount.toString());
-    }
-    if (email) {
-      cy.get("form").findByPlaceholderText(/Email/i).type(email);
-    }
-    if (notes) {
-      cy.get("form")
-        .findByPlaceholderText(/Additional notes/i)
-        .type(notes);
-    }
-    cy.get("form").submit();
-  }
-);
+import "./commands/addHomePageCommands";
+import "./commands/addRsvpCommands";
 
 declare global {
   namespace Cypress {
     interface Chainable {
+      isHomePageValid(): Chainable<void>;
       submitRsvpForm(formData: RSVPFormData): Chainable<void>;
     }
   }
