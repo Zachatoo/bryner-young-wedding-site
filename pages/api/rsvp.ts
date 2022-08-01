@@ -23,7 +23,7 @@ export default async function handler(
 
     await _addToAirtable(body);
 
-    if (body.rsvpStatus === "Accepted") {
+    if (body.rsvpStatus === "Accepted" && body.email) {
       await _sendConfirmationEmail(body);
     }
   } catch (err) {

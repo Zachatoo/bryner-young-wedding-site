@@ -14,9 +14,7 @@ export function useIntersectionObserver(options?: IntersectionObserverInit) {
     }
 
     return () => {
-      if (el) {
-        observer.disconnect();
-      }
+      observer.disconnect();
     };
   }, [ref, options]);
 
