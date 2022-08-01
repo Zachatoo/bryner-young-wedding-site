@@ -21,7 +21,6 @@ const HomePage: NextPage = () => {
   });
 
   const weddingDate = new Date(process.env.NEXT_PUBLIC_WEDDING_DATE || "");
-  const bannerText = "We're getting married!";
 
   return (
     <>
@@ -31,10 +30,13 @@ const HomePage: NextPage = () => {
         <Banner
           src="/images/home-banner.jpg"
           alt="Zach and MK walking through a meadow"
-          text={bannerText}
-        />
+        >
+          <BrideGroomText />
+        </Banner>
 
-        <BrideGroomText />
+        <h1 className="pb-4 text-center sm:pb-8">
+          We&apos;re getting married!
+        </h1>
 
         <WeddingDateText targetDate={weddingDate} />
         <Countdown
