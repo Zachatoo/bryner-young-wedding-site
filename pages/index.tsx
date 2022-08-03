@@ -4,6 +4,7 @@ import {
   BrideGroomText,
   Carousel,
   Head,
+  HeaderNavigation,
   RegistryLinksText,
   WeddingDateText,
 } from "components";
@@ -26,6 +27,8 @@ const HomePage: NextPage = () => {
     <>
       <Head></Head>
 
+      <HeaderNavigation />
+
       <main className="w-full pb-8 sm:pb-16">
         <Banner
           src="/images/home-banner.jpg"
@@ -46,7 +49,7 @@ const HomePage: NextPage = () => {
 
         <div
           ref={proposalRef}
-          id="stories"
+          id="proposal"
           className={`story ${proposalIsVisible ? "" : "opacity-0"}`}
         >
           <div

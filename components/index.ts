@@ -6,4 +6,5 @@ export * from "./Banner";
 export * from "./Button";
 export * from "./Carousel";
 export * from "./Head";
+export * from "./HeaderNavigation";
 export * from "./Icon";
