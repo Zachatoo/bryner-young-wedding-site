@@ -29,6 +29,7 @@ module.exports = {
         DEFAULT: "white",
       },
       cream: {
+        light: "var(--color-cream-light)",
         DEFAULT: "var(--color-cream)",
         dark: "var(--color-cream-dark)",
       },

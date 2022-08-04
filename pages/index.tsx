@@ -5,6 +5,7 @@ import {
   Carousel,
   Head,
   HeaderNavigation,
+  Heading,
   RegistryLinksText,
   WeddingDateText,
 } from "components";
@@ -29,23 +30,22 @@ const HomePage: NextPage = () => {
 
       <HeaderNavigation />
 
-      <main className="w-full pb-8 sm:pb-16">
+      <main className="w-full pt-6 pb-8 sm:pb-16">
+        <h1 className="pb-4 text-center sm:pb-8 text-green-dark">
+          We&apos;re getting married!
+        </h1>
+
+        <WeddingDateText className="text-green-dark" />
+        <Countdown
+          targetTime={weddingDate}
+          className="flex justify-center pb-6 text-center sm:pb-8 text-green-dark"
+        />
         <Banner
           src="/images/home-banner.jpg"
           alt="Zach and MK walking through a meadow"
         >
           <BrideGroomText />
         </Banner>
-
-        <h1 className="pb-4 text-center sm:pb-8">
-          We&apos;re getting married!
-        </h1>
-
-        <WeddingDateText targetDate={weddingDate} />
-        <Countdown
-          targetTime={weddingDate}
-          className="flex justify-center pb-6 text-center sm:pb-8"
-        />
 
         <div
           ref={proposalRef}
@@ -57,10 +57,12 @@ const HomePage: NextPage = () => {
               proposalIsVisible ? "translate-x-0" : "-translate-x-full"
             }`}
           >
-            <div className="flex items-center gap-4 sm:gap-6">
-              <h2>The proposal</h2>
-              <span>- Zach</span>
-            </div>
+            <Heading paddingClasses="pt-10 sm:pt-12">
+              <div className="flex items-center justify-center gap-4 sm:gap-6">
+                <h2>The proposal</h2>
+                <span>- Zach</span>
+              </div>
+            </Heading>
             <p>
               We had planned to go to Bear Lake to be with my extended family
               for a family reunion that morning. When I went to pick up Mary
@@ -112,15 +114,17 @@ const HomePage: NextPage = () => {
         </div>
 
         <div id="photos" className="max-w-3xl px-4 mx-auto">
-          <h2 className="pt-6 pb-4 text-center sm:pb-6 sm:pt-8">Photos</h2>
+          <Heading>
+            <h2 className="text-center">Photos</h2>
+          </Heading>
           <Carousel imagePaths={engagementImagePaths} />
         </div>
 
-        <div className="bg-blue-light">
-          <div id="registry" className="max-w-3xl px-4 mx-auto">
-            <h2 className="pt-6 pb-4 text-center sm:pb-6 sm:pt-8">Registry</h2>
-            <RegistryLinksText />
-          </div>
+        <div id="registry" className="max-w-3xl px-4 mx-auto">
+          <Heading>
+            <h2>Registry</h2>
+          </Heading>
+          <RegistryLinksText />
         </div>
       </main>
     </>

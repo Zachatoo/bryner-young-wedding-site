@@ -24,8 +24,6 @@ const RSVPPage: NextPage = () => {
     resolver: yupResolver(rsvpFormDataSchema),
   });
 
-  const weddingDate = new Date(process.env.NEXT_PUBLIC_WEDDING_DATE || "");
-
   const _onSubmit: SubmitHandler<RSVPFormData> = async (data) => {
     try {
       const res = await fetch("/api/rsvp", {
@@ -61,7 +59,7 @@ const RSVPPage: NextPage = () => {
           </h1>
 
           <BrideGroomText />
-          <WeddingDateText targetDate={weddingDate} />
+          <WeddingDateText />
         </div>
 
         <div className="px-2 py-3">

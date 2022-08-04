@@ -1,21 +1,13 @@
+import classNames from "classnames";
+
 interface Props {
-  targetDate: Date;
+  className?: string;
 }
 
-export function WeddingDateText({ targetDate }: Props) {
-  const dateFormatOptions: Intl.DateTimeFormatOptions = {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  };
-  const formattedWeddingDate = Intl.DateTimeFormat(
-    "en-us",
-    dateFormatOptions
-  ).format(targetDate);
-
-  return (
-    <div className="px-8 pb-4 text-3xl text-center sm:text-5xl font-great-vibes">
-      {formattedWeddingDate}
-    </div>
+export function WeddingDateText({ className }: Props) {
+  const classes = classNames(
+    "px-8 pb-4 text-3xl text-center sm:text-5xl font-great-vibes",
+    className
   );
+  return <div className={classes}>September 9, 2022</div>;
 }

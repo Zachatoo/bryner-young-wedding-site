@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import Image from "next/image";
 import { PropsWithChildren } from "react";
 
@@ -13,7 +12,9 @@ export function Banner({ src, alt, children }: PropsWithChildren<Props>) {
   return (
     <>
       {children && (
-        <div className={`sm:hidden block ${classes}`}>{children}</div>
+        <div className={`sm:hidden block pb-6 text-green-dark ${classes}`}>
+          {children}
+        </div>
       )}
       <div className="banner">
         <Image src={src} alt={alt} layout="fill" objectFit="cover" priority />

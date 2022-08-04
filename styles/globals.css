@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --color-cream-light: #fefcf8;
   --color-cream: #fef7e5;
   --color-cream-dark: #e8e1d1;
   --color-blue-light: #c5d5ee;
@@ -23,7 +24,8 @@
 }
 
 html {
-  scroll-padding-top: 30px;
+  scroll-behavior: smooth;
+  background-color: var(--color-cream-light);
 }
 
 /* Replacing with other styles for accessibility */
@@ -41,10 +43,10 @@ h6 {
   @apply capitalize font-great-vibes;
 }
 h1 {
-  @apply text-6xl sm:text-7xl;
+  @apply text-6xl text-center sm:text-7xl;
 }
 h2 {
-  @apply text-5xl sm:text-6xl;
+  @apply text-5xl text-center sm:text-6xl;
 }
 
 p {
@@ -59,7 +61,7 @@ a {
 }
 
 .banner {
-  @apply relative flex flex-col items-center justify-center w-screen h-[300px] sm:h-[700px] pb-4 sm:pb-8;
+  @apply relative flex flex-col items-center justify-center w-screen h-[250px] sm:h-[700px];
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -71,10 +73,7 @@ a {
 }
 
 .story {
-  @apply flex justify-center px-4 py-6 transition duration-500 ease-in-out sm:px-12 sm:py-8 bg-spruce-light;
-}
-.story > div {
-  @apply max-w-3xl my-auto transition-transform duration-1000 ease-in-out motion-reduce:transition-none;
+  @apply flex justify-center max-w-3xl px-4 mx-auto sm:px-12;
 }
 
 /* Radio inputs */

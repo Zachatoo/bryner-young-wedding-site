@@ -1,5 +1,5 @@
 Cypress.Commands.add("isHomePageValid", () => {
-  cy.findByRole("link", { name: /MK & Z/i }).should("be.visible");
+  cy.findByRole("link", { name: /Home/i }).should("be.visible");
   cy.findByRole("link", { name: /Proposal/i }).should("be.visible");
   cy.findByRole("link", { name: /Photos/i }).should("be.visible");
   cy.findByRole("link", { name: /Registry/i }).should("be.visible");
