@@ -12,6 +12,7 @@ import {
 import dynamic from "next/dynamic";
 import { useIntersectionObserver } from "hooks";
 import { engagementImagePaths } from "utils";
+import bannerImg from "../public/images/home-banner.jpg";
 
 const Countdown = dynamic(() => import("../components/countdown/Countdown"), {
   ssr: false,
@@ -40,10 +41,7 @@ const HomePage: NextPage = () => {
           targetTime={weddingDate}
           className="flex justify-center pb-6 text-center sm:pb-8 text-green-dark"
         />
-        <Banner
-          src="/images/home-banner.jpg"
-          alt="Zach and MK walking through a meadow"
-        >
+        <Banner src={bannerImg} alt="Zach and MK walking through a meadow">
           <BrideGroomText />
         </Banner>
 

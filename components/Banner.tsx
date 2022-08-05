@@ -1,8 +1,9 @@
+import type { StaticImageData } from "next/image";
+import type { PropsWithChildren } from "react";
 import Image from "next/image";
-import { PropsWithChildren } from "react";
 
 interface Props {
-  src: string;
+  src: string | StaticImageData;
   alt: string;
 }
 
