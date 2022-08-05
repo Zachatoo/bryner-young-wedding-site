@@ -52,6 +52,8 @@ export function Carousel({ imagePaths }: Props) {
             className="object-contain"
             width={600}
             height={400}
+            placeholder="blur"
+            blurDataURL={`/_next/image?url=${fileName}&w=16&q=1`}
           />
         ))}
       </ResponsiveCarousel>
@@ -73,6 +75,8 @@ export function Carousel({ imagePaths }: Props) {
                 alt=""
                 className="object-contain"
                 layout="fill"
+                placeholder="blur"
+                blurDataURL={`/_next/image?url=${fileName}&w=16&q=1`}
               />
             </div>
           ))}
