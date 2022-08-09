@@ -33,6 +33,13 @@ export function HeaderNavigation() {
               </a>
             </Link>
           </li>
+          <li className="flex items-center">
+            <Link href="/#faq">
+              <a className="text-sm no-underline text-green-dark hover:text-black">
+                FAQ
+              </a>
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
