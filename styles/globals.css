@@ -35,11 +35,7 @@ html {
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2 {
   @apply capitalize font-great-vibes;
 }
 h1 {
@@ -47,6 +43,9 @@ h1 {
 }
 h2 {
   @apply text-5xl text-center sm:text-6xl;
+}
+h3 {
+  @apply text-lg;
 }
 
 p {

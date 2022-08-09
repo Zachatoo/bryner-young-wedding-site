@@ -1,5 +1,7 @@
 import type { NextPage } from "next";
 import {
+  Accordian,
+  AccordianItem,
   Banner,
   BrideGroomText,
   Carousel,
@@ -123,6 +125,20 @@ const HomePage: NextPage = () => {
             <h2>Registry</h2>
           </Heading>
           <RegistryLinksText />
+        </div>
+
+        <div id="faq" className="max-w-3xl px-4 mx-auto">
+          <Heading>
+            <h2>Frequently Asked Questions</h2>
+          </Heading>
+          <Accordian>
+            <AccordianItem title="How did you two meet?">
+              We met through a mutual friend.
+            </AccordianItem>
+            <AccordianItem title="Will there be any vegan/vegetarian/gluten free/special diet options?">
+              Yes!
+            </AccordianItem>
+          </Accordian>
         </div>
       </main>
     </>

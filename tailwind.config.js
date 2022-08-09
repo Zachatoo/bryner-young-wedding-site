@@ -15,6 +15,13 @@ module.exports = {
           ...defaultTheme.fontFamily.sans,
         ],
         sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
+        monospace: [
+          "Menlo",
+          "Lucida Console",
+          "Monaco",
+          "Consolas",
+          "monospace",
+        ],
       },
       fontSize: {
         "6.5xl": "4rem",
