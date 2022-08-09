@@ -6,9 +6,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 interface Props {
   imagePaths: string[];
+  alt?: string;
 }
 
-export function Carousel({ imagePaths }: Props) {
+export function Carousel({ imagePaths, alt }: Props) {
   const [state, setState] = useState({
     isFullScreen: false,
     itemIndex: 0,
@@ -26,9 +27,9 @@ export function Carousel({ imagePaths }: Props) {
       <div key={i} className="relative w-full h-20">
         <Image
           src={fileName}
+          alt={`${alt} thumbnail`}
           layout="fill"
           objectFit="contain"
-          alt="logo"
         ></Image>
       </div>
     ));
@@ -48,7 +49,7 @@ export function Carousel({ imagePaths }: Props) {
           <Image
             key={fileName}
             src={fileName}
-            alt=""
+            alt={alt ?? ""}
             className="object-contain"
             width={600}
             height={400}
@@ -70,7 +71,7 @@ export function Carousel({ imagePaths }: Props) {
             <div key={fileName} className="w-screen h-screen">
               <Image
                 src={fileName}
-                alt=""
+                alt={alt ?? ""}
                 className="object-contain"
                 layout="fill"
               />

@@ -14,7 +14,7 @@ import {
 } from "components";
 import dynamic from "next/dynamic";
 import { engagementImagePaths } from "utils";
-import bannerImg from "../public/images/home-banner.jpg";
+import bannerImg from "public/images/home-banner.jpg";
 
 const Countdown = dynamic(() => import("../components/countdown/Countdown"), {
   ssr: false,
@@ -102,7 +102,10 @@ const HomePage: NextPage = () => {
           <Heading>
             <h2 className="text-center">Photos</h2>
           </Heading>
-          <Carousel imagePaths={engagementImagePaths} />
+          <Carousel
+            imagePaths={engagementImagePaths}
+            alt="Engagement picture"
+          />
         </Section>
 
         <Section id="registry">

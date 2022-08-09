@@ -1,3 +1,5 @@
+import { engagementImagePaths } from "../../../utils";
+
 Cypress.Commands.add("isHomePageValid", () => {
   cy.findByRole("link", { name: /Home/i }).should("be.visible");
   cy.findByRole("link", { name: /Proposal/i }).should("be.visible");
@@ -21,9 +23,27 @@ Cypress.Commands.add("isHomePageValid", () => {
   cy.findByText(/^hours$/i).should("be.visible");
   cy.findByText(/^minutes$/i).should("be.visible");
   cy.findByText(/^seconds$/i).should("be.visible");
-  cy.findByRole("heading", { name: /^The Proposal$/i })
-    .scrollIntoView({ duration: 300 })
-    .should("be.visible");
+  cy.findAllByAltText(/Zach and MK walking through a meadow/i)
+    .should("be.visible")
+    .and(($img) => {
+      // "naturalWidth" and "naturalHeight" are set when the image loads
+      expect(
+        ($img[0] as HTMLImageElement).naturalWidth,
+        "image has natural width"
+      ).to.be.greaterThan(0);
+    });
+  cy.findByRole("heading", { name: /^The Proposal$/i }).should("be.visible");
   cy.findByRole("heading", { name: /^Photos$/i }).should("be.visible");
+  cy.findAllByAltText(/^Engagement picture$/i).should(
+    "have.length",
+    engagementImagePaths.length
+  );
+  cy.findAllByAltText(/^Engagement picture thumbnail$/i).should(
+    "have.length",
+    engagementImagePaths.length
+  );
   cy.findByRole("heading", { name: /^Registry$/i }).should("be.visible");
+  cy.findByRole("heading", { name: /^Frequently Asked Questions$/i }).should(
+    "be.visible"
+  );
 });
