@@ -56,6 +56,11 @@ a {
   @apply underline underline-offset-4;
 }
 
+input,
+textarea {
+  background-color: var(--color-cream-light);
+}
+
 .text-shadow {
   text-shadow: 1px 1px black;
 }
