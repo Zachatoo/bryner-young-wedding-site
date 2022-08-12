@@ -2,7 +2,7 @@ import { engagementImagePaths } from "../../../utils";
 
 Cypress.Commands.add("isHomePageValid", () => {
   cy.findByRole("link", { name: /Home/i }).should("be.visible");
-  cy.findByRole("link", { name: /Proposal/i }).should("be.visible");
+  cy.findByRole("link", { name: /Story/i }).should("be.visible");
   cy.findByRole("link", { name: /Photos/i }).should("be.visible");
   cy.findByRole("link", { name: /Registry/i }).should("be.visible");
   cy.findAllByText(/^Mary Katherine Bryner$/i, {
