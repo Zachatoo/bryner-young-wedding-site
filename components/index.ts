@@ -9,4 +9,5 @@ export * from "./Carousel";
 export * from "./Head";
 export * from "./HeaderNavigation";
 export * from "./Heading";
+export * from "./HorizontalRule";
 export * from "./Icon";

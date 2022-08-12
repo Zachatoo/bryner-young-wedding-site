@@ -26,6 +26,7 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--color-cream-light);
+  scroll-padding-top: 50px;
 }
 
 /* Replacing with other styles for accessibility */
@@ -35,7 +36,8 @@ html {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   @apply capitalize font-great-vibes;
 }
 h1 {
@@ -45,6 +47,9 @@ h2 {
   @apply text-5xl text-center sm:text-6xl;
 }
 h3 {
+  @apply text-4xl text-center sm:text-5xl;
+}
+h4 {
   @apply text-lg;
 }
 
@@ -53,6 +58,10 @@ p {
 }
 a {
   @apply underline underline-offset-4;
+}
+
+nav a {
+  @apply text-sm no-underline text-green-dark hover:text-black;
 }
 
 input,

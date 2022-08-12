@@ -1,7 +1,5 @@
 import type { NextPage } from "next";
 import {
-  Accordian,
-  AccordianItem,
   Banner,
   BrideGroomText,
   Carousel,
@@ -43,10 +41,23 @@ const HomePage: NextPage = () => {
           <BrideGroomText />
         </Banner>
 
-        <Section id="proposal">
-          <Heading paddingClasses="pt-10 sm:pt-12">
+        <Section paddingClasses="pt-10 sm:pt-12">
+          <Heading id="story">
+            <h2>Our Story</h2>
+          </Heading>
+        </Section>
+
+        <Section paddingClasses="pt-8 sm:pt-10">
+          <Heading id="about-us">
+            <h3>About Us</h3>
+          </Heading>
+          <p></p>
+        </Section>
+
+        <Section paddingClasses="pt-8 sm:pt-10">
+          <Heading id="proposal">
             <div className="flex items-center justify-center gap-4 sm:gap-6">
-              <h2>The proposal</h2>
+              <h3>The Proposal</h3>
               <span>- Zach</span>
             </div>
           </Heading>
@@ -98,9 +109,9 @@ const HomePage: NextPage = () => {
           </p>
         </Section>
 
-        <Section id="photos">
-          <Heading>
-            <h2 className="text-center">Photos</h2>
+        <Section>
+          <Heading id="photos">
+            <h2>Photos</h2>
           </Heading>
           <Carousel
             imagePaths={engagementImagePaths}
@@ -108,25 +119,11 @@ const HomePage: NextPage = () => {
           />
         </Section>
 
-        <Section id="registry">
-          <Heading>
+        <Section>
+          <Heading id="registry">
             <h2>Registry</h2>
           </Heading>
           <RegistryLinksText />
-        </Section>
-
-        <Section id="faq">
-          <Heading>
-            <h2>Frequently Asked Questions</h2>
-          </Heading>
-          <Accordian>
-            <AccordianItem title="How did you two meet?">
-              We met through a mutual friend.
-            </AccordianItem>
-            <AccordianItem title="Will there be any vegan/vegetarian/gluten free/special diet options?">
-              Yes!
-            </AccordianItem>
-          </Accordian>
         </Section>
       </main>
     </>

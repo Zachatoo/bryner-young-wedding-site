@@ -1,13 +1,21 @@
 import type { PropsWithChildren } from "react";
+import classNames from "classnames";
 
 interface Props {
-  id: string;
+  paddingClasses?: string;
 }
 
-export function Section({ id, children }: PropsWithChildren<Props>) {
-  return (
-    <section id={id} className="max-w-3xl px-4 mx-auto">
-      {children}
-    </section>
+export function Section({
+  paddingClasses,
+  children,
+}: PropsWithChildren<Props>) {
+  const classes = classNames(
+    "max-w-3xl px-4 mx-auto",
+    {
+      "pt-16 sm:pt-20": !paddingClasses,
+    },
+    paddingClasses
   );
+
+  return <section className={classes}>{children}</section>;
 }

@@ -32,6 +32,8 @@ Cypress.Commands.add("isHomePageValid", () => {
         "image has natural width"
       ).to.be.greaterThan(0);
     });
+  cy.findByRole("heading", { name: /^Our Story$/i }).should("be.visible");
+  cy.findByRole("heading", { name: /^About Us$/i }).should("be.visible");
   cy.findByRole("heading", { name: /^The Proposal$/i }).should("be.visible");
   cy.findByRole("heading", { name: /^Photos$/i }).should("be.visible");
   cy.findAllByAltText(/^Engagement picture$/i).should(
@@ -43,7 +45,4 @@ Cypress.Commands.add("isHomePageValid", () => {
     engagementImagePaths.length
   );
   cy.findByRole("heading", { name: /^Registry$/i }).should("be.visible");
-  cy.findByRole("heading", { name: /^Frequently Asked Questions$/i }).should(
-    "be.visible"
-  );
 });

@@ -7,37 +7,22 @@ export function HeaderNavigation() {
         <ul className="flex gap-3 sm:gap-6">
           <li className="flex items-center mr-auto">
             <Link href="/">
-              <a className="text-sm no-underline text-green-dark hover:text-black">
-                Home
-              </a>
+              <a>Home</a>
             </Link>
           </li>
           <li className="flex items-center">
-            <Link href="/#proposal">
-              <a className="text-sm no-underline text-green-dark hover:text-black">
-                Proposal
-              </a>
+            <Link href="/#story">
+              <a>Our Story</a>
             </Link>
           </li>
           <li className="flex items-center">
             <Link href="/#photos">
-              <a className="text-sm no-underline text-green-dark hover:text-black">
-                Photos
-              </a>
+              <a>Photos</a>
             </Link>
           </li>
           <li className="flex items-center">
             <Link href="/#registry">
-              <a className="text-sm no-underline text-green-dark hover:text-black">
-                Registry
-              </a>
-            </Link>
-          </li>
-          <li className="flex items-center">
-            <Link href="/#faq">
-              <a className="text-sm no-underline text-green-dark hover:text-black">
-                FAQ
-              </a>
+              <a>Registry</a>
             </Link>
           </li>
         </ul>
