@@ -76,10 +76,10 @@ const HomePage: NextPage = () => {
           <p>
             We went to the beach and walked along the shore picking up
             seashells. At one point while we were standing in the water, she
-            said something along the lines of &quot;you should just propose
-            right now.&quot; Unfortunately I had left the ring in my jeans and
-            we had both switched into swimsuits so I didn&apos;t have the ring
-            on me anymore, so I didn&apos;t.
+            made a comment about how this would be the perfect place to propose.
+            Unfortunately I had left the ring in my jeans and we had both
+            switched into swimsuits so I didn&apos;t have the ring on me
+            anymore, so I didn&apos;t.
           </p>
           <p>
             Later in the day we took an ATV to use to go up to Sadducee Spring.
@@ -99,9 +99,10 @@ const HomePage: NextPage = () => {
             The day was coming to a close, and I still hadn&apos;t proposed! We
             were back at Fish Haven Lodge and I said to Mary Katherine &quot;We
             should go stand on the bridge for a minute. I like bridges. And
-            water.&quot; Mary Katherine talked about how we should have a stream
-            going through our yard one day, and I responded with &quot;You know
-            what else we should do?&quot; &quot;What?&quot; &quot;We should get
+            water.&quot; Mary Katherine, completely oblivious to what was about
+            to happen, talked about how we should have a stream going through
+            our yard one day, and I responded with &quot;You know what else we
+            should do?&quot; &quot;What?&quot; &quot;We should get
             married.&quot; &quot;Yeah we should!&quot; As I went to kneel on one
             knee she realized what was happening and she said &quot;Wait,
             really?&quot; I pulled out the ring and I asked if she would marry
