@@ -1,6 +1,4 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import type { MailDataRequired } from "@sendgrid/mail";
 import Airtable from "airtable";
 import { MailService } from "@sendgrid/mail";
 import { isValidEmail, RSVPFormData, rsvpFormDataSchema } from "utils";
@@ -22,10 +20,7 @@ export default async function handler(
     const body = await rsvpFormDataSchema.validate(req.body);
 
     await _addToAirtable(body);
-
-    if (body.rsvpStatus === "Accepted" && body.email) {
-      await _sendConfirmationEmail(body);
-    }
+    await _sendEmails(body);
   } catch (err) {
     console.error(err);
     res.status(400).json({ message: "An unexpected error has occured." });
@@ -60,23 +55,62 @@ async function _addToAirtable(body: RSVPFormData) {
   ]);
 }
 
-async function _sendConfirmationEmail(body: RSVPFormData) {
-  if (!isValidEmail(body.email)) {
-    console.log("Did not send rsvp email to invalid email", body.email);
-    return;
-  }
+async function _sendEmails(body: RSVPFormData) {
   const mailService = new MailService();
   mailService.setApiKey(process.env.SENDGRID_API_KEY || "");
 
-  const message = {
-    to: body.email,
-    from: process.env.EMAIL_RSVP,
-    templateId: process.env.SENDGRID_TEMPLATE_RSVP_CONFIRMATION,
-    dynamicTemplateData: {
-      baseUrl: process.env.BASE_URL,
-      name: body.name,
-    },
-  } as MailDataRequired;
+  const promises = [];
+  if (body.rsvpStatus === "Accepted" && body.email) {
+    promises.push(_sendConfirmationEmail(body, mailService));
+  }
+  promises.push(_sendGuestRsvpdEmail(body, mailService));
+  await Promise.all(promises);
+}
 
-  await mailService.send(message);
+async function _sendConfirmationEmail(
+  { email, name }: RSVPFormData,
+  mailService: MailService
+) {
+  if (!isValidEmail(email)) {
+    console.log("Did not send rsvp email to invalid email", email);
+    return;
+  }
+
+  const emailRsvp = process.env.EMAIL_RSVP ?? "";
+  const templateId = process.env.SENDGRID_TEMPLATE_RSVP_CONFIRMATION ?? "";
+  const baseUrl = process.env.BASE_URL ?? "";
+
+  const message = {
+    to: email,
+    from: emailRsvp,
+    templateId,
+    dynamicTemplateData: {
+      baseUrl,
+      name,
+    },
+  };
+
+  mailService.send(message);
+}
+
+async function _sendGuestRsvpdEmail(
+  { name, rsvpStatus, guestCount, notes }: RSVPFormData,
+  mailService: MailService
+) {
+  const emailRsvp = process.env.EMAIL_RSVP ?? "";
+  const templateId = process.env.SENDGRID_TEMPLATE_GUEST_RSVPD ?? "";
+
+  const message = {
+    to: emailRsvp,
+    from: emailRsvp,
+    templateId,
+    dynamicTemplateData: {
+      name,
+      rsvpStatus,
+      guestCount,
+      notes,
+    },
+  };
+
+  mailService.send(message);
 }
