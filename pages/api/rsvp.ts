@@ -97,6 +97,10 @@ async function _sendGuestRsvpdEmail(
   { name, rsvpStatus, guestCount, notes }: RSVPFormData,
   mailService: MailService
 ) {
+  if (name.match(/^Test \d+/)) {
+    console.log("Did not send guest rsvp email for Test account");
+    return;
+  }
   const emailRsvp = process.env.EMAIL_RSVP ?? "";
   const templateId = process.env.SENDGRID_TEMPLATE_GUEST_RSVPD ?? "";
 
