@@ -22,6 +22,7 @@ export function Head({
   return (
     <NextHead>
       <title>{title}</title>
+      <meta name="description" content={description} key="description" />
       <link rel="icon" href="/favicon.ico" />
       {/* Twitter */}
       <meta name="twitter:card" content={description} key="twcard" />
