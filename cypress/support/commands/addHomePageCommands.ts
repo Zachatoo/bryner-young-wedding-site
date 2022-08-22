@@ -2,7 +2,7 @@ import { engagementImagePaths } from "../../../utils";
 
 Cypress.Commands.add("isHomePageValid", () => {
   cy.findByRole("link", { name: /Home/i }).should("be.visible");
-  cy.findByRole("link", { name: /Story/i }).should("be.visible");
+  cy.findByRole("link", { name: /Proposal/i }).should("be.visible");
   cy.findByRole("link", { name: /Photos/i }).should("be.visible");
   cy.findByRole("link", { name: /Registry/i }).should("be.visible");
   cy.findAllByText(/^Mary Katherine Bryner$/i, {
@@ -32,8 +32,8 @@ Cypress.Commands.add("isHomePageValid", () => {
         "image has natural width"
       ).to.be.greaterThan(0);
     });
-  cy.findByRole("heading", { name: /^Our Story$/i }).should("be.visible");
-  cy.findByRole("heading", { name: /^About Us$/i }).should("be.visible");
+  // cy.findByRole("heading", { name: /^Our Story$/i }).should("be.visible");
+  // cy.findByRole("heading", { name: /^About Us$/i }).should("be.visible");
   cy.findByRole("heading", { name: /^The Proposal$/i }).should("be.visible");
   cy.findByRole("heading", { name: /^Photos$/i }).should("be.visible");
   cy.findAllByAltText(/^Engagement picture$/i).should(
