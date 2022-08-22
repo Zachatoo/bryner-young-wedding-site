@@ -11,8 +11,8 @@ export function HeaderNavigation() {
             </Link>
           </li>
           <li className="flex items-center">
-            <Link href="/#story">
-              <a>Our Story</a>
+            <Link href="/#proposal">
+              <a>Proposal</a>
             </Link>
           </li>
           <li className="flex items-center">
