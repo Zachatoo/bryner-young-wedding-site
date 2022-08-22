@@ -41,7 +41,7 @@ const HomePage: NextPage = () => {
           <BrideGroomText />
         </Banner>
 
-        <Section paddingClasses="pt-10 sm:pt-12">
+        {/* <Section paddingClasses="pt-10 sm:pt-12">
           <Heading id="story">
             <h2>Our Story</h2>
           </Heading>
@@ -52,12 +52,12 @@ const HomePage: NextPage = () => {
             <h3>About Us</h3>
           </Heading>
           <p></p>
-        </Section>
+        </Section> */}
 
-        <Section paddingClasses="pt-8 sm:pt-10">
+        <Section>
           <Heading id="proposal">
             <div className="flex items-center justify-center gap-4 sm:gap-6">
-              <h3>The Proposal</h3>
+              <h2>The Proposal</h2>
               <span>- Zach</span>
             </div>
           </Heading>
