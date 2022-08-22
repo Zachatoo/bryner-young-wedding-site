@@ -41,6 +41,13 @@ const HomePage: NextPage = () => {
           <BrideGroomText />
         </Banner>
 
+        <Section paddingClasses="pt-6 sm:pt-8">
+          <div className="flex justify-center">
+            There will be a Zoom link for those that are not able to attend in
+            person.
+          </div>
+        </Section>
+
         {/* <Section paddingClasses="pt-10 sm:pt-12">
           <Heading id="story">
             <h2>Our Story</h2>
