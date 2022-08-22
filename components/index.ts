@@ -1,4 +1,3 @@
-export * from "./accordian";
 export * from "./blurbs";
 export * from "./countdown";
 export * from "./form";
