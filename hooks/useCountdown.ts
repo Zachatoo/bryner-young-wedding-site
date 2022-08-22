@@ -20,14 +20,20 @@ const useCountdown = (targetDate: Date) => {
 
 const getReturnValues = (countDown: number) => {
   // calculate time left
-  const days = Math.floor(countDown / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((countDown % (1000 * 60)) / 1000);
+  const days = round(countDown / (1000 * 60 * 60 * 24));
+  const hours = round((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = round((countDown % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = round((countDown % (1000 * 60)) / 1000);
 
   return { days, hours, minutes, seconds };
 };
+
+// Round down if positive number, round up if negative number
+function round(value: number) {
+  if (value > 0) {
+    return Math.floor(value);
+  }
+  return Math.ceil(value);
+}
 
 export { useCountdown };

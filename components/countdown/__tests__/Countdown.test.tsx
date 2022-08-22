@@ -55,4 +55,35 @@ describe("Countdown", () => {
       expect(secondsValue).toEqual(expectedSeconds.toString());
     }
   );
+
+  it("shows all zeroes at target date", () => {
+    const mockTargetDate = new Date("2022-09-09 14:30:00.000-06:00");
+    vi.setSystemTime(mockTargetDate);
+    render(<Countdown targetTime={mockTargetDate} />);
+
+    const daysValue = screen.getByTestId("countdown-days").innerHTML;
+    const hoursValue = screen.getByTestId("countdown-hours").innerHTML;
+    const minutesValue = screen.getByTestId("countdown-minutes").innerHTML;
+    const secondsValue = screen.getByTestId("countdown-seconds").innerHTML;
+    expect(daysValue).toEqual("0");
+    expect(hoursValue).toEqual("0");
+    expect(minutesValue).toEqual("0");
+    expect(secondsValue).toEqual("0");
+  });
+
+  it("shows negative numbers past target date", () => {
+    const mockDate = new Date("2022-09-09 14:30:01.000-06:00");
+    const mockTargetDate = new Date("2022-09-09 14:30:00.000-06:00");
+    vi.setSystemTime(mockDate);
+    render(<Countdown targetTime={mockTargetDate} />);
+
+    const daysValue = screen.getByTestId("countdown-days").innerHTML;
+    const hoursValue = screen.getByTestId("countdown-hours").innerHTML;
+    const minutesValue = screen.getByTestId("countdown-minutes").innerHTML;
+    const secondsValue = screen.getByTestId("countdown-seconds").innerHTML;
+    expect(daysValue).toEqual("0");
+    expect(hoursValue).toEqual("0");
+    expect(minutesValue).toEqual("0");
+    expect(secondsValue).toEqual("-1");
+  });
 });

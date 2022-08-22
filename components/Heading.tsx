@@ -1,26 +1,15 @@
-import classNames from "classnames";
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
+import { HorizontalRule } from "components";
 
 interface Props {
-  paddingClasses?: string;
+  id: string;
 }
 
-export function Heading({
-  paddingClasses,
-  children,
-}: PropsWithChildren<Props>) {
-  const classes = classNames(
-    "text-green-dark",
-    {
-      "pt-16 sm:pt-20": !paddingClasses,
-    },
-    paddingClasses
-  );
-
+export function Heading({ id, children }: PropsWithChildren<Props>) {
   return (
-    <div className={classes}>
+    <div id={id} className="text-green-dark">
       {children}
-      <img src="/horizontalRule.png" alt="" className="h-12 mx-auto mb-8" />
+      <HorizontalRule />
     </div>
   );
 }
