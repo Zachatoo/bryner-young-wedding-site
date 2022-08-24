@@ -59,28 +59,31 @@ async function _sendEmails(body: RSVPFormData) {
   const mailService = new MailService();
   mailService.setApiKey(process.env.SENDGRID_API_KEY || "");
 
-  const promises = [];
-  if (body.rsvpStatus === "Accepted" && body.email) {
-    promises.push(_sendConfirmationEmail(body, mailService));
+  const messages = [];
+  if (
+    body.rsvpStatus === "Accepted" &&
+    body.email &&
+    isValidEmail(body.email)
+  ) {
+    console.log("sending email to guest");
+    messages.push(_createConfirmationEmailBody(body));
   }
-  promises.push(_sendGuestRsvpdEmail(body, mailService));
-  await Promise.all(promises);
+  if (!body.name.match(/^Test \d+/)) {
+    console.log("sending email to host");
+    messages.push(_createGuestRsvpdEmailBody(body));
+  }
+  if (messages.length > 0) {
+    await mailService.send(messages, true);
+    console.log("emails successfully sent");
+  }
 }
 
-async function _sendConfirmationEmail(
-  { email, name }: RSVPFormData,
-  mailService: MailService
-) {
-  if (!isValidEmail(email)) {
-    console.log("Did not send rsvp email to invalid email", email);
-    return;
-  }
-
+function _createConfirmationEmailBody({ email, name }: RSVPFormData) {
   const emailRsvp = process.env.EMAIL_RSVP ?? "";
   const templateId = process.env.SENDGRID_TEMPLATE_RSVP_CONFIRMATION ?? "";
   const baseUrl = process.env.BASE_URL ?? "";
 
-  const message = {
+  return {
     to: email,
     from: emailRsvp,
     templateId,
@@ -89,22 +92,18 @@ async function _sendConfirmationEmail(
       name,
     },
   };
-
-  mailService.send(message);
 }
 
-async function _sendGuestRsvpdEmail(
-  { name, rsvpStatus, guestCount, notes }: RSVPFormData,
-  mailService: MailService
-) {
-  if (name.match(/^Test \d+/)) {
-    console.log("Did not send guest rsvp email for Test account");
-    return;
-  }
+function _createGuestRsvpdEmailBody({
+  name,
+  rsvpStatus,
+  guestCount,
+  notes,
+}: RSVPFormData) {
   const emailRsvp = process.env.EMAIL_RSVP ?? "";
   const templateId = process.env.SENDGRID_TEMPLATE_GUEST_RSVPD ?? "";
 
-  const message = {
+  return {
     to: emailRsvp,
     from: emailRsvp,
     templateId,
@@ -115,6 +114,4 @@ async function _sendGuestRsvpdEmail(
       notes,
     },
   };
-
-  mailService.send(message);
 }
