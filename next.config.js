@@ -5,7 +5,7 @@ module.exports = {
     return [
       {
         source: "/live",
-        destination: "https://zoom.us",
+        destination: process.env.NEXT_ZOOM_LINK,
         permanent: false,
       },
     ];
