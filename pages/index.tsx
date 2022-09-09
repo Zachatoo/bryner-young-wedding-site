@@ -43,8 +43,9 @@ const HomePage: NextPage = () => {
 
         <Section paddingClasses="pt-6 sm:pt-8">
           <div className="flex justify-center">
-            There will be a Zoom link for those that are not able to attend in
-            person.
+            <span>
+              Watch the ceremony live <a href="/live">here</a>
+            </span>
           </div>
         </Section>
 
