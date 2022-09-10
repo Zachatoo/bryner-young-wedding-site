@@ -41,14 +41,6 @@ const HomePage: NextPage = () => {
           <BrideGroomText />
         </Banner>
 
-        <Section paddingClasses="pt-6 sm:pt-8">
-          <div className="flex justify-center">
-            <span>
-              Watch the ceremony live <a href="/live">here</a>
-            </span>
-          </div>
-        </Section>
-
         {/* <Section paddingClasses="pt-10 sm:pt-12">
           <Heading id="story">
             <h2>Our Story</h2>
