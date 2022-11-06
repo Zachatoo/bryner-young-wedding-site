@@ -12,7 +12,7 @@ Cypress.Commands.add("isHomePageValid", () => {
     ignore: "script, style, .hidden",
   }).should("be.visible");
   cy.findByRole("heading", {
-    name: /^We\'re Getting Married!$/i,
+    name: /^We Got Married!$/i,
   }).should("be.visible");
   cy.findByText(/^September 9, 2022$/i).should("be.visible");
   cy.findByTestId("countdown-days").should("be.visible");
@@ -23,7 +23,7 @@ Cypress.Commands.add("isHomePageValid", () => {
   cy.findByText(/^hours$/i).should("be.visible");
   cy.findByText(/^minutes$/i).should("be.visible");
   cy.findByText(/^seconds$/i).should("be.visible");
-  cy.findAllByAltText(/Zach and MK walking through a meadow/i)
+  cy.findAllByAltText(/Weddings rings on a box in front of flowers/i)
     .should("be.visible")
     .and(($img) => {
       // "naturalWidth" and "naturalHeight" are set when the image loads
