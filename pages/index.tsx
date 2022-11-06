@@ -12,7 +12,7 @@ import {
 } from "components";
 import dynamic from "next/dynamic";
 import { engagementImagePaths } from "utils";
-import bannerImg from "public/images/home-banner.jpg";
+import bannerImg from "public/images/mk_zach_wedding-016.jpg";
 
 const Countdown = dynamic(() => import("../components/countdown/Countdown"), {
   ssr: false,
@@ -29,7 +29,7 @@ const HomePage: NextPage = () => {
 
       <main className="w-full pt-6 pb-8 sm:pb-16">
         <h1 className="pb-4 text-center sm:pb-8 text-green-dark">
-          We&apos;re getting married!
+          We got married!
         </h1>
 
         <WeddingDateText className="text-green-dark" />
@@ -37,7 +37,10 @@ const HomePage: NextPage = () => {
           targetTime={weddingDate}
           className="flex justify-center pb-6 text-center sm:pb-8 text-green-dark"
         />
-        <Banner src={bannerImg} alt="Zach and MK walking through a meadow">
+        <Banner
+          src={bannerImg}
+          alt="Weddings rings on a box in front of flowers"
+        >
           <BrideGroomText />
         </Banner>
 
