@@ -6,8 +6,6 @@ on:
   pull_request:
     branches:
       - "main"
-  schedule:
-    - cron: "0 8 * * *"
 env:
   BASE_URL: ${{ secrets.BASE_URL }}
   NEXT_PUBLIC_WEDDING_DATE: ${{ secrets.NEXT_PUBLIC_WEDDING_DATE }}
